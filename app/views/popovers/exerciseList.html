@@ -1,0 +1,24 @@
+<div class="popover-root" md-whiteframe="1" layout="row" layout-align="end end">
+	<div class="popover exercise-popover am-fade" md-whiteframe="1">
+		<div layout="row" class="popover-title">
+			<h3 ng-show="popover.title">{{popover.title}}</h3>
+			<div flex></div>
+			<md-button ng-click="clearExercises()" class="red">Clear</md-button>
+		</div>
+		<div class="popover-content">
+			<div class="exercise-list-item" ng-repeat="exercise in $storage.Programme.exerciseData track by $index" layout="row">
+				&nbsp;
+				<div class="exercise-list-image">
+					<div ng-cloak ng-if="isNumber(image)" class="exercise-list-thumbnail" ng-show="exercise.images.length > 0" ng-repeat="image in exercise.images | limitTo: 1 track by $index" style="background-image:url(https://rehabgurufiles.s3.amazonaws.com/thumb/{{image}}.jpg)">
+					</div>
+					<div ng-cloak ng-if="!isNumber(image)" class="exercise-list-thumbnail" ng-show="exercise.images.length > 0" ng-repeat="image in exercise.images | limitTo: 1 track by $index" style="background-image:url({{image}})">
+					</div>
+				</div>
+				&nbsp;
+				<div class="exercise-list-text">
+					<p>{{exercise.exerciseName}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

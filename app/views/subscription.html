@@ -1,0 +1,43 @@
+<div ng-include src="'views/partials/accountSubHeader.html'" class="header-background"></div>
+<md-content flex layout="column" md-scroll-y>
+	<div layout="row" flex="noshrink" layout-align="center center">
+		<div flex-xs="90" flex-sm="80" flex-md="80" class="subscription-content">
+			<form name="form" class="subscription-form" role="form" layout="row" layout-xs="column" layout-align="center start" layout-align-xs="start center">
+				<div flex-gt-xs="50" class="frame-user">
+					<div class="loggedInSubscription">
+						<label class="account-title">Subscription</label><br>
+						<br>
+						<br>
+						<div class="form-group">
+							<label>User Status :</label><br>
+							<label class="uppercase orange txt-43px">{{currentPlan}}</label><br>
+							<label ng-if="customer">Current Plan : <label class="orange uppercase">{{customer.subscriptions.data[0].plan.name || 'FREE'}}</label></label>
+							<br>
+							<label ng-if="customer">Card : **** **** **** {{customer.sources.data[0].last4}}
+								<label ng-click="openCreditCardForm()" class="orange uppercase">Update Card</label>
+							</label>
+							<div ng-if="currentPlan === 'free'">
+								<p>To signup for a Rehab Guru Pro account click complete the form below and click submit</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div flex-gt-xs="50" class="frame-user">
+					<div layout="row" layout-align="center center">
+						<img class="subscription-img2 center-block" src="images/image-clip/img_subscription2.png" alt="" hide-xs>
+					</div>
+					<!-- ng-if="currentPlan === 'free'"  -->
+					<p class="txt-21px text-pro uppercase">Sign up to Rehab Guru Pro</p>
+					<ul style="list-style-image: url('images/logoxs-li.png');">
+						<li><p class="text-list">Unlimited Clients</p></li>
+						<li><p class="text-list">Unlimited Templates</p></li>
+						<li><p class="text-list">Unlimited Favourites</p></li>
+						<li><p class="text-list">Unlimited Sending</p></li>
+						<li><p class="text-list">Publisher Access</p></li>
+					</ul>
+					<md-button class="md-primary md-raised pp-sign-up" ng-click="openCreditCardForm()">Sign Up</md-button>
+				</div>
+			</form>
+		</div>
+	</div>
+</md-content>

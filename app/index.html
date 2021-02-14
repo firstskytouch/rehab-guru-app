@@ -1,0 +1,198 @@
+<!doctype html>
+<html class="no-js">
+
+    <head>
+        <!-- <base href="/"> -->
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="description" content="">
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; img-src * data: 'unsafe-inline'; connect-src * 'unsafe-inline'; frame-src *;"> -->
+
+        <!--         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" /> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- <base href="/"> -->
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css(.) styles/vendor.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+        <link rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css" />
+        <link rel="stylesheet" href="bower_components/angular-motion/dist/angular-motion.css" />
+        <link rel="stylesheet" href="bower_components/angular-ui-switch/angular-ui-switch.css" />
+        <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css" />
+        <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+        <link rel="stylesheet" href="bower_components/angular-material-expansion-panel/dist/md-expansion-panel.css" />
+        <link rel="stylesheet" href="bower_components/md-color-picker/dist/mdColorPicker.min.css" />
+        <link rel="stylesheet" href="bower_components/cropme/cropme.css" />
+        <link rel="stylesheet" href="bower_components/cropperjs/dist/cropper.css" />
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="favicons/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="favicons/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="favicons/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="favicons/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="favicons/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="favicons/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="favicons/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="favicons/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="favicons/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="favicons/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+        <script type="text/javascript">
+            window.heap = window.heap || [], heap.load = function(e, t) {
+                window.heap.appid = e, window.heap.config = t = t || {};
+                var r = t.forceSSL || "https:" === document.location.protocol,
+                    a = document.createElement("script");
+                a.type = "text/javascript", a.async = !0, a.src = (r ? "https:" : "http:") + "//cdn.heapanalytics.com/js/heap-" + e + ".js";
+                var n = document.getElementsByTagName("script")[0];
+                n.parentNode.insertBefore(a, n);
+                for (var o = function(e) {
+                        return function() {
+                            heap.push([e].concat(Array.prototype.slice.call(arguments, 0)))
+                        }
+                    }, p = ["addEventProperties", "addUserProperties", "clearEventProperties", "identify", "removeEventProperty", "setEventProperties", "track", "unsetEventProperty"], c = 0; c < p.length; c++) heap[p[c]] = o(p[c])
+            };
+            heap.load("383568327");
+        </script>
+    </head>
+
+    <body ng-app="rehabGuruWebApp20App" layout-fill layout="column">
+        <div id="md-alert">
+            <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+            <!-- Add your site or application content here -->
+            <!-- <div class="wrapper"> -->
+            <span us-spinner></span>
+        </div>
+        <div ng-include class="no-print" src="'views/partials/header.html'"></div>
+        <div ui-view="" flex layout="column"></div>
+
+        <!-- </div> -->
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+        <script>
+            ! function(A, n, g, u, l, a, r) {
+                A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
+                        (A[l].q = A[l].q || []).push(arguments)
+                    }, A[l].l = +new Date, a = n.createElement(g),
+                    r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+            }(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-61730448-1');
+            ga('send', 'pageview');
+        </script>
+        <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+        <script type="text/javascript">
+            Stripe.setPublishableKey('pk_live_hQEtlE0ghmdAHp5UUNz2x1O0');
+        </script>
+        <!-- build:js(.) scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-aria/angular-aria.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+        <script src="bower_components/angular-messages/angular-messages.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="bower_components/parse/parse.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/algoliasearch/dist/algoliasearch.js"></script>
+        <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+        <script src="bower_components/ngstorage/ngStorage.js"></script>
+        <script src="bower_components/lodash/lodash.js"></script>
+        <script src="bower_components/angularjs-dropdown-multiselect/src/angularjs-dropdown-multiselect.js"></script>
+        <script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="bower_components/angular-sweetalert/SweetAlert.js"></script>
+        <script src="bower_components/angular-sortable-view/src/angular-sortable-view.js"></script>
+        <script src="bower_components/fastclick/lib/fastclick.js"></script>
+        <script src="bower_components/underscore/underscore.js"></script>
+        <script src="bower_components/angular-underscore-module/angular-underscore-module.js"></script>
+        <script src="bower_components/ngSweetAlert/SweetAlert.js"></script>
+        <script src="bower_components/angular-ui-switch/angular-ui-switch.js"></script>
+        <script src="bower_components/angular-payments/lib/angular-payments.js"></script>
+        <script src="bower_components/angular-base64/angular-base64.js"></script>
+        <script src="bower_components/ng-idle/angular-idle.js"></script>
+        <script src="bower_components/spin.js/spin.js"></script>
+        <script src="bower_components/angular-loading/angular-loading.js"></script>
+        <script src="bower_components/angular-ui-select/dist/select.js"></script>
+        <script src="bower_components/angular-material/angular-material.js"></script>
+        <script src="bower_components/angular-material-expansion-panel/dist/md-expansion-panel.js"></script>
+        <script src="bower_components/fuse.js/src/fuse.js"></script>
+        <script src="bower_components/tinycolor/tinycolor.js"></script>
+        <script src="bower_components/md-color-picker/dist/mdColorPicker.min.js"></script>
+        <script src="bower_components/angular-touch/angular-touch.js"></script>
+        <script src="bower_components/angular-superswipe/superswipe.js"></script>
+        <script src="bower_components/cropme/cropme.js"></script>
+        <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+        <script src="bower_components/ng-file-upload-shim/ng-file-upload-shim.js"></script>
+        <script src="bower_components/cropperjs/dist/cropper.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/header.js"></script>
+        <script src="scripts/controllers/account.js"></script>
+        <script src="scripts/controllers/clients.js"></script>
+        <script src="scripts/controllers/exercise.js"></script>
+        <script src="scripts/controllers/program.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/services/factories.js"></script>
+        <script src="scripts/controllers/register.js"></script>
+        <script src="scripts/services/parsefactory.js"></script>
+        <script src="scripts/controllers/programmesettings.js"></script>
+        <script src="scripts/controllers/programmeschedule.js"></script>
+        <script src="scripts/controllers/programmepreview.js"></script>
+        <script src="scripts/controllers/publish.js"></script>
+        <script src="scripts/controllers/publisher.js"></script>
+        <script src="scripts/controllers/clientdetails.js"></script>
+        <script src="scripts/filters/propsfilter.js"></script>
+        <script src="scripts/controllers/subscription.js"></script>
+        <script src="scripts/controllers/sharing.js"></script>
+        <script src="scripts/controllers/customise.js"></script>
+        <script src="scripts/directives/customstyle.directive.js"></script>
+
+
+
+        <!-- endbuild -->
+        <script>
+            ! function(e, o, n) {
+                window.HSCW = o, window.HS = n, n.beacon = n.beacon || {};
+                var t = n.beacon;
+                t.userConfig = {}, t.readyQueue = [], t.config = function(e) {
+                    this.userConfig = e
+                }, t.ready = function(e) {
+                    this.readyQueue.push(e)
+                }, o.config = {
+                    docs: {
+                        enabled: !0,
+                        baseUrl: "//rehabguru.helpscoutdocs.com/"
+                    },
+                    color: '#ff9800',
+                    icon: 'search',
+                    zindex: 1200,
+                    poweredBy: false,
+                    contact: {
+                        enabled: !0,
+                        formId: "bcc7971a-921b-11e6-91aa-0a5fecc78a4d"
+                    }
+                };
+                var r = e.getElementsByTagName("script")[0],
+                    c = e.createElement("script");
+                c.type = "text/javascript", c.async = !0, c.src = "https://djtflbt20bdde.cloudfront.net/", r.parentNode.insertBefore(c, r)
+            }(document, window.HSCW || {}, window.HS || {});
+        </script>
+
+    </body>
+
+</html>

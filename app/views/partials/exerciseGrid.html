@@ -1,0 +1,32 @@
+<div class="exerciseContainer" ng-scope layout="row" layout-align="center center">
+  <md-grid-list
+      md-cols-xs="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="4"
+      md-row-height="1:1" md-gutter="22px" flex="100">
+    <md-grid-tile flex-xs="6" ng-show="exercise.images.length > 0" md-whiteframe="{{height}}" ng-repeat="exercise in allExercises | filter: filters | limitTo: 100 track by $index">
+		  <md-card flex="flex" class="exercise">
+				<md-card-content layout="column">
+					<div ng-cloak ng-if="isNumber(image)" class="thumbnailImage" ng-show="exercise.images.length > 0" ng-repeat="image in exercise.images | limitTo: 1 track by $index" style="background-image:url(https://rehabgurufiles.s3.amazonaws.com/medium/{{image}}.jpg)" layout-fill>
+					</div>
+					<div ng-cloak ng-if="!isNumber(image)" class="thumbnailImage" ng-show="exercise.images.length > 0" ng-repeat="image in exercise.images | limitTo: 1 track by $index" style="background-image:url({{secureUrl(image)}})">
+					</div>
+				</md-card-content>
+				<md-card-title>
+					<md-card-title-text>
+						<h5 ng-class="{'orange-color': exerciseExists(exercise) }">{{exercise.exerciseName | limitTo: 70}}{{exercise.exerciseName.length > 70 ? '...' : ''}}</h5>
+					</md-card-title-text>
+				</md-card-title>
+				<md-card-actions layout="row" layout-align="center center" class="exercise-thumbnail-top" >
+					<md-button class="md-icon-button exercise-button min-width-24" aria-label="Settings" ng-click="expandExercise(exercise)">
+						<md-icon>zoom_out_map</md-icon>
+					</md-button>
+					<md-button class="md-icon-button exercise-button min-width-24" aria-label="Settings" ng-click="toggleExerciseFavourite(exercise)">
+						<md-icon class="favorite" ng-class="{'md-primary': favouriteExists(exercise) }">favorite</md-icon>
+					</md-button>
+					<md-button class="md-icon-button exercise-button min-width-24" aria-label="Settings" ng-click="toggleExercise(exercise)">
+						<md-icon ng-class="{'md-primary': exerciseExists(exercise) }">check_circle</md-icon>
+					</md-button>
+				</md-card-actions>
+			</md-card>
+    </md-grid-tile>
+  </md-grid-list>
+</div>

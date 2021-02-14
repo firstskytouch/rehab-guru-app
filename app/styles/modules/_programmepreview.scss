@@ -1,0 +1,89 @@
+.specifics-image {
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  display: block;
+  float: left;
+  min-height: 50px;
+  width: 50px;
+  min-height: 100%;
+  width: 100%;
+}
+
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+.panel-group {
+    margin-bottom: 20px;
+}
+.panel-default > .panel-heading {
+  cursor: pointer;
+}
+
+.panel-title {
+  max-width: 90%;
+  clear: right;
+}
+
+.panel-body {
+  background-color: #f7f7f7;
+
+  textarea.form-control {
+    min-height: 80px;
+  }
+}
+
+.delete-exercise-button {
+  position: relative;
+  top: 0;
+  // opacity: 0;
+  font-size: 15px;
+  border: none;
+  background-color: transparent;
+  margin-top: -25px;
+  left: 13px;
+}
+
+.param-inputs {
+  .param-delete-icon {
+    display: none;
+    color: red;
+    float: right;
+    font-size: 18px;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+  }
+}
+
+.param-inputs:hover {
+  .param-delete-icon {
+    display: block;
+  }
+}
+
+.switch {
+  width: 65px;
+}
+
+.switch.checked small {
+  left: 35px;
+}
+
+.pdfElement {
+  margin-bottom:5px;
+}
+.noError {
+  md-input-container .md-errors-spacer {
+    display: none;
+  }
+}

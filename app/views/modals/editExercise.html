@@ -1,0 +1,20 @@
+<md-dialog class="custom-dialog">
+	<div layout="row" layout-align="center center">
+		<h3>{{ctrl.exercise.exerciseName}}</h3>
+		<span flex></span>
+		<md-button class="md-icon-button" ng-click="ctrl.cancel()">
+			<md-icon aria-label="Close dialog">close</md-icon>
+		</md-button>
+	</div>
+	<md-dialog-content>
+		<div class="modal-body">
+			<div class="thumbnailImage" ng-repeat="image in ctrl.exercise.images track by $index">
+				<div ng-if="ctrl.isNumber(image)" class="thumbnailImage" style="background-image:url(http://rehabgurufiles.s3.amazonaws.com/medium/{{image}}.jpg)"></div>
+				<div ng-if="!ctrl.isNumber(image)" class="thumbnailImage" style="background-image:url({{image}})"></div>
+			</div>
+		</div>
+	</md-dialog-content>
+	<md-dialog-actions>
+		<md-button class="md-raise md-accent" ng-click="$hide(exericse)">Save</md-button>
+	</md-dialog-actions>
+</md-dialog>

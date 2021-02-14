@@ -1,0 +1,18 @@
+<md-content class="header-background sub-header" layout="row" layout-align="center center" hide-xs hide-sm>
+	<md-nav-bar md-selected-nav-item="currentSubNavItem" nav-bar-aria-label="navigation links" flex class="margin-left-24">
+		<md-button class="menu submenu" ng-class="link.linkTitle == currentSubNavItem ? 'md-primary' : 'white'" href="#/{{link.linkState}}" ng-repeat="link in accountSubHeaderLinks track by $index">
+			<md-icon md-svg-src="images/icon/{{link.icon}}"></md-icon>
+			{{link.linkTitle}}
+		</md-button>
+	</md-nav-bar>
+</md-content>
+<md-content class="header-background sub-header-mobile" layout="row" layout-align="center center" hide-gt-sm>
+	<md-nav-bar layout="row" layout-align="center center"  md-selected-nav-item="currentSubNavItem" nav-bar-aria-label="navigation links" flex class="margin-left-24">
+		<md-button class="menu submenu" ng-class="link.linkTitle == currentSubNavItem ? 'md-primary' : 'white'" href="#/{{link.linkState}}" ng-repeat="link in accountSubHeaderLinks track by $index">
+			<div layout="column" layout-align="center center">
+				<span class="height-24"><md-icon md-svg-src="images/icon/{{link.icon}}"></md-icon></span>
+				<span>{{link.linkTitle}}</span>
+			</div>
+		</md-button>
+	</md-nav-bar>
+</md-content>

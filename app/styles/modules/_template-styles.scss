@@ -1,0 +1,85 @@
+
+.program-list {
+    span {
+        font-size: 16px;
+        color: rgb(82, 84, 85);
+    }
+}
+.program-list:hover {
+    span {
+        font-size: 16px;
+        color: $accent;
+    }
+}
+.md-button:not([disabled]):hover {
+    background: transparent;
+}
+
+.program-list-grid {
+    border-radius: 8px;
+    span {
+        font-size: 16px;
+        color: rgb(82, 84, 85);
+    }
+}
+.program-list-grid:hover {
+    border-radius: 8px;
+    span {
+        font-size: 16px;
+        color: rgb(82, 84, 85);
+    }
+    button {
+        background: $accent;
+        color: white;
+    }
+    button:hover {
+        background: $accent;
+        color: white;
+    }
+}
+.program-bg:hover {
+    background: url(../images/bt_program.png);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-position-x: -98px;
+}
+md-tooltip {
+    font-size: 12px;
+}
+
+.programme-thumbnail {
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    // border: none;
+    display: block;
+    // height: 100%;
+    float: left;
+    min-height: 100px;
+    margin: 4px;
+    min-width: 100px;
+}
+
+.thumbnailImage {
+    width: 130px;
+    height: 130px;
+    background: #fff;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+
+    img {
+        // border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 2px;
+        width: 100%;
+        height: auto;
+        max-height: 100%;
+    }
+}

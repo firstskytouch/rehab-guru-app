@@ -1,0 +1,52 @@
+<md-content flex layout="column" class="form-mobile" md-scroll-y>
+	<div layout="row" flex="noshrink" layout-align="center end">
+		<div flex-xs="90" flex-sm="80" flex-md="80" class="login-content">
+			<form name="form" ng-submit="doLoginAction(user)" class="login-form" role="form">
+				<div layout="column" layout-align="center center">
+					<img class="login-logo center-block" src="images/rehabgurulogo.png">
+					<div style="width:74%;" layout="column" layout-align="space-between center" class="login">
+						<div class="full-width">
+							<label class="hint">USERNAME (EMAIL ADDRESS)</label>
+						</div>
+						<md-input-container>
+							<input type="email" name="username" id="username" aria-label="username" ng-model="creds.username" ng-pattern="/^.+@.+\..+$/" required>
+							<div ng-messages="form.username.$error" role="alert">
+								<div ng-message-exp="['required']">
+									Username is required.
+								</div>
+								<div ng-message-exp="['pattern']">
+									Your username must be an e-mail address.
+								</div>
+							</div>
+						</md-input-container>
+						<div class="full-width">
+							<label class="hint">PASSWORD</label>
+						</div>
+						<md-input-container>
+							<input id="password" type="password" name="password" aria-label="password" ng-model="creds.password" required>
+							<div ng-messages="form.password.$error" role="alert">
+								<div ng-message-exp="['required']">
+									Password is required.
+								</div>
+							</div>
+						</md-input-container>
+					</div>
+				</div>
+				<br>
+				<label class="help-block danger">{{error.message}}</label>
+				<div layout="row" layout-align="center center" class="login-button">
+					<md-button type="submit" class="md-raised md-accent" ng-disabled="form.$invalid || dataLoading">Login</md-button>
+					<label class="hint">OR</label>
+					<md-button class="md-raised md-primary" ng-click="actionRegister()">Register</md-button>
+				</div>
+				<div layout="row" layout-align="center center" class="forgot-bg">
+					<md-button class="md-accent forgot" ng-click="resetPasswordModal($event)">Forgot your password?</md-button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div flex="noshrink" layout="row" layout-align="center start">
+		<small class="terms">By logging in to your Rehab Guru account you are continuing to agree to our <a class="orange" href="https://www.rehabguru.com/terms-and-conditions/" target="_blank">Terms of Use</a> and <a class="orange" href="https://www.rehabguru.com/privacy-policy/" target="_blank">Privacy Policy</a>.
+		</small>
+	</div>
+</md-content>

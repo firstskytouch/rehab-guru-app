@@ -1,0 +1,42 @@
+md-dialog {
+    md-dialog-content {
+        height: 100%;
+    }
+
+    label {
+        letter-spacing: 0.5px;
+        color: $dark-grey;
+    }
+}
+
+.logo-bg {
+    background-image: url('../images/half-logo.png');
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-size: 30%;
+}
+
+.custom-dialog {
+    min-width: 280px;
+    width: 80%;
+    height: 80%;
+    padding: 10px;
+
+    md-dialog-content {
+        height: 100%;
+    }
+}
+
+md-tabs:not(.md-no-tab-content):not(.md-dynamic-height) {
+    height: 100%;
+}
+@media (max-device-width: 750px) {
+    .custom-dialog {
+        width: 80%;
+    }
+}
+@media (max-width: 750px) {
+    .custom-dialog {
+        width: 80%;
+    }
+}

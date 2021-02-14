@@ -1,0 +1,189 @@
+<div ng-include src="'views/partials/subHeader.html'"></div>
+<div ng-if="isList" layout="row" class="left-sidebar">
+	<md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" style="width: 285px;">
+		<md-content layout-padding>
+			<div layout="row" hide-gt-xs>
+				<div flex></div>
+				<md-button class="md-icon-button" ng-click="closeLeft()">
+					<md-icon>close</md-icon>
+				</md-button>
+			</div>
+			<p><label class="account-title">Filter</label></p>
+
+			<div layout="column">
+				<span ng-repeat="filter in templateFilters">
+					<label class="checkbox" for="{{filter.feedId}}">
+						<md-checkbox class="md-primary checked-color" ng-model="selection.ids[filter.feedId]" name="group" id="{{filter.feedId}}" ng-change="updatePages()">
+							{{filter.niceName}}
+						</md-checkbox>
+					</label>
+				</span>
+			</div>
+			<div>
+				<p><label class="account-title">Load Exercises</label></p>
+				<hr>
+			</div>
+			<div layout="column" class="load" layout-align="center center">
+				<br>
+				<input placeholder="Templete Id" ng-model="programmeIdToAdd" type="text" class="templete-id">
+				<br>
+				<md-button class="md-accent md-raised" ng-click="addTemplate(programmeIdToAdd)">Load</md-button>
+				<br>
+			</div>
+		</md-content>
+	</md-sidenav>
+	<md-content flex layout="column" md-scroll-y>
+		<div layout="row" flex="noshrink" layout-align="center start">
+			<form name="form" ng-submit="register(user)" class="program-form" role="form">
+				<div layout="row" layout-align="center center" class="small-icon-button">
+					<md-button class="md-icon-button md-primary" ng-click="toggleLeft()" aria-label="Settings" hide-gt-sm>
+						<md-icon>more_vert</md-icon>
+					</md-button>
+					<div class="inner-addon right-addon exercise-search" flex layout="row">
+						<md-icon class="glyphicon glyphicon-search round-icon">search</md-icon>
+						<input placeholder="Search Templates (e.g 'Thoracic Mobility')" type="search" ng-model="search.term" ng-change="searchTemplates(search.term)" class="clients-search form-control" flex>
+					</div>
+					<md-button class="md-icon-button" ng-click="setGrid()" ng-class="isGrid && 'md-primary'">
+						<md-icon>apps</md-icon>
+					</md-button>
+					<md-button class="md-icon-button" ng-click="setList()" ng-class="!isGrid && 'md-primary'">
+						<md-icon>view_list</md-icon>
+					</md-button>
+				</div>
+				<div class="height-24">
+				</div>
+				<md-list ng-hide="isGrid" flex>
+					<md-list-item ng-repeat="programme in ProgrammesResult" ng-click="addExercisesToProgrammeModal(programme, $event)" class="md-whiteframe-2dp white-bg program-list height-72">
+						<span>{{programme.programmeTitle}} </span>
+						<md-icon ng-if="programme.userId != 'sItr5GpAPX' && programme.userId === userId && programme.shared">wifi</md-icon>
+						<div flex></div>
+						<md-button ng-show="programme.userId === userId" class="md-icon-button md-accent md-secondary" ng-click="deleteProgramme(programme)" aria-label="Settings">
+							<md-icon>delete</md-icon>
+						</md-button>
+						<img data-animation="am-flip-x" data-placement="left" bs-tooltip="guruTemplate" class="md-secondary" ng-if="programme.userId === 'sItr5GpAPX'" width="40" src="images/logoxs.png" />
+					</md-list-item>
+				</md-list>
+				<md-grid-list
+						ng-show="isGrid"
+						md-cols="4" md-cols-xs="1" md-cols-sm="2" md-cols-md="3"
+						md-row-height="1:1" md-gutter="6px">
+					<md-grid-tile ng-repeat="programme in ProgrammesResult" class="gray" md-rowspan="1" md-colspan="1">
+						<div layout-fill class="md-whiteframe-2dp white-bg program-list-grid">
+							<div layout-fill class="program-bg" layout="column" layout-align="center center">
+								<div class="templateIcon" layout="row" layout-align="center center">
+									<div class="templateLength">{{programme.exerciseData.length}}</div>
+								</div>
+								<br>
+								<span>{{programme.programmeTitle}} </span>
+								<hr style="width: 67px; margin-bottom: 5px;">
+								<md-button class="md-button" ng-click="addExercisesToProgrammeModal(programme, $event)" aria-label="Settings">
+									View DETAILS
+								</md-button>
+							</div>
+						</div>
+					</md-grid-tile>
+				</md-grid-list>
+				<br>
+				<div layout="column" layout-align="center center">
+					<div class="paginaton">
+						<md-button class="md-icon-button" ng-click="prev()">
+							<md-icon class="md-accent">arrow_back</md-icon>
+						</md-button>
+						<md-button class="md-icon-button" ng-click="prev()" ng-if="prevPage">{{prevPage}}</md-button>
+						<md-button class="md-icon-button md-accent current-page-number">{{currentPage}}</md-button>
+						<md-button class="md-icon-button" ng-click="next()" ng-if="nextPage">{{nextPage}}</md-button>
+						<md-button class="md-icon-button" ng-click="next()">
+							<md-icon class="md-accent">arrow_forward</md-icon>
+						</md-button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</md-content>
+</div>
+
+
+<md-fab-speed-dial md-open="false" md-direction="left" class="added-exercise-indicator md-scale" ng-if="$storage.Programme.exerciseData.length > 0">
+
+
+	<md-fab-trigger>
+		<md-button class="md-fab md-primary exercise-indicator-font">
+			{{$storage.Programme.exerciseData.length}}
+			<md-tooltip md-direction="top">
+				{{tooltip.title}}
+			</md-tooltip>
+		</md-button>
+	</md-fab-trigger>
+
+
+
+	<md-fab-actions class="black">
+		<div ng-include src="'views/popovers/exerciseList.html'"></div>
+	</md-fab-actions>
+</md-fab-speed-dial>
+
+<md-content ng-if="!isList" id="add_templete_excerises">
+	<div layout="row" flex="noshrink" layout-align="center end">
+		<div flex-xs="90" flex="80">
+			<div layout="row" layout-align="center center">
+				<h3>{{programme.programmeTitle}}</h3>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-click="hide()">
+					<md-icon md-svg-src="images/close-icon.svg"></md-icon>
+				</md-button>
+			</div>
+			<md-tabs md-dynamic-height md-border-bottom>
+				<md-tab label="exercise">
+					<div ng-repeat="exercise in programme.exerciseData track by $index" layout="column" class="exercise-bg">
+						<div flex="100">
+							<h4>{{exercise.exerciseName}}</h4>
+						</div>
+						<md-content layout="row" md-scroll-x class="white-bg">
+							<div ng-cloak ng-if="isNumber(image)" class="programme-thumbnail" ng-show="exercise.images.length > 0" ng-repeat="image in exercise.images track by $index" style="background-image:url(https://rehabgurufiles.s3.amazonaws.com/thumb/{{image}}.jpg)">
+							</div>
+							<div ng-cloak ng-if="!isNumber(image)" class="programme-thumbnail" ng-show="exercise.images.length > 0" ng-repeat="image in exercise.images | limitTo: 1 track by $index" style="background-image:url({{secureUrl(image)}})">
+							</div>
+						</md-content>
+						<br />
+						<div flex="100" layout="row" layout-xs="column" layout-align="start start">
+							<p class="description" ng-if="exercise.exerciseDescription">Description</p>
+							<p>{{exercise.exerciseDescription}}</p>
+						</div>
+					</div>
+				</md-tab>
+				<md-tab label="Settings" ng-if="programme.userId === userId">
+					<div layout="column">
+						<div>
+							<h4>Sharing</h4>
+						</div>
+						<div ng-if="userAttributes.shareKey">
+							<md-button ng-if="!programme.shared" ng-click="toggleShareProgramme(programme)" class="md-raised md-accent">Share Template</md-button>
+							<md-button ng-if="programme.shared" ng-click="toggleShareProgramme(programme)" class="md-raised md-primary">Stop Sharing Template</md-button>
+						</div>
+						<div ng-if="!userAttributes.shareKey">
+							<p>You must enable sharing in your account settings before you can share this template.</p>
+						</div>
+						<h4 style="margin-bottom: 2.66em">Program Title</h4>
+						<div>
+							<md-input-container class="md-block">
+								<input required ng-model="savedProgramme.title" type="text" placeholder="Enter Program Title and Click save to update">
+							</md-input-container>
+						</div>
+					</div>
+				</md-tab>
+				<md-tab label="Load">
+					<div layout="row" layout-align="center center">
+						<div ng-if="!selectedIndex">
+							<md-button ng-click="overwriteExercises(programme)" ng-if="$storage.Programme.exerciseData.length > 0" class="md-raised md-accent">Overwrite Existing</md-button>
+							<label ng-if="$storage.Programme.exerciseData.length > 0"> OR </label>
+							<md-button ng-click="loadTemplateExercises(programme)" class="md-raised md-primary">Load Exercises</md-button>
+						</div>
+						<div ng-if="selectedIndex">
+							<md-button ng-if="programme.programmeTitle.length > 0 && programme.userId === userId" ng-click="updateProgramme(programme)" class="md-raised">SAVE</md-button>
+						</div>
+					</div>
+				</md-tab>
+			</md-tabs>
+		</div>
+	</div>
+</md-content>

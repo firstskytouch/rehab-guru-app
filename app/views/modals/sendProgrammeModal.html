@@ -1,0 +1,82 @@
+<md-dialog class="custom-dialog">
+	<form layout-fill>
+		<md-toolbar class="md-accent">
+			<div class="md-toolbar-tools">
+				<h3 class="white">Send Program</h3>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-click="data.cancel()">
+					<img src="images/icon/ic_close_white.png">
+				</md-button>
+			</div>
+		</md-toolbar>
+		<md-dialog-content class="padding-24">
+			<md-chips ng-model="data.$storage.SelectedClients" md-autocomplete-snap md-require-match="true" class="custom-chips small-chips"
+					md-on-add="data.onAddChips($chip)"  md-on-remove="data.onRemoveChips($chip)">
+				<md-autocomplete
+						md-items="client in data.$storage.Clients | propsFilter: {name: client.searchText}"
+						md-selected-item="client.selectedItem"
+						md-search-text="client.searchText"
+						md-item-text="client.name"
+						placeholder="Search and select Clients..."
+						md-min-length="0"
+						md-menu-class="autocomplete-custom-template">
+					<md-item-template>
+						{{client.name}}
+					</md-item-template>
+				</md-autocomplete>
+				<md-chip-template>
+					<span>
+						<small>{{$chip.name}}</small>
+					</span>
+				</md-chip-template>
+			</md-chips>
+			<br>
+			<md-grid-list md-cols="4" md-row-height="fit" ng-style="{'height': {{(data.$storage.Clients.length / 4 + 1) * 30}} + 'px'}"
+					md-gutter="12px" md-gutter-gt-sm="8px" flex="100" hide-xs hide-sm hide-md>
+				<md-grid-tile ng-repeat="client in data.$storage.Clients" class="height-32" layout-align="start start">
+				<div flex="100">
+					<md-checkbox class="md-primary" md-no-ink ng-model="client.checked" ng-change="data.ModifyFilter(client)" aria-label="No Ink Effects">
+						{{client.name}}
+					</md-checkbox>
+				</div>
+				</md-grid-tile>
+			</md-grid-list>
+			<md-grid-list md-cols="3" md-row-height="fit" ng-style="{'height': {{(data.$storage.Clients.length / 3 + 1) * 30}} + 'px'}"
+					md-gutter="12px" md-gutter-gt-sm="8px" flex="100" hide-xs hide-sm hide-gt-md>
+				<md-grid-tile ng-repeat="client in data.$storage.Clients" class="height-32" layout-align="start start">
+				<div flex="100">
+					<md-checkbox class="md-primary" md-no-ink ng-model="client.checked" ng-change="data.ModifyFilter(client)" aria-label="No Ink Effects">
+						{{client.name}}
+					</md-checkbox>
+				</div>
+				</md-grid-tile>
+			</md-grid-list>
+			<md-grid-list md-cols="2" md-row-height="fit" ng-style="{'height': {{(data.$storage.Clients.length / 2 + 1) * 30}} + 'px'}"
+					md-gutter="12px" md-gutter-gt-sm="8px" flex="100" hide-xs hide-gt-sm>
+				<md-grid-tile ng-repeat="client in data.$storage.Clients" class="height-32" layout-align="start start">
+				<div flex="100">
+					<md-checkbox class="md-primary" md-no-ink ng-model="client.checked" ng-change="data.ModifyFilter(client)" aria-label="No Ink Effects">
+						{{client.name}}
+					</md-checkbox>
+				</div>
+				</md-grid-tile>
+			</md-grid-list>
+			<md-grid-list md-cols="1" md-row-height="fit" ng-style="{'height': {{(data.$storage.Clients.length + 1) * 30}} + 'px'}"
+					md-gutter="12px" md-gutter-gt-sm="8px" flex="100" hide-gt-xs>
+				<md-grid-tile ng-repeat="client in data.$storage.Clients" class="height-32" layout-align="start start">
+				<div flex="100">
+					<md-checkbox class="md-primary" md-no-ink ng-model="client.checked" ng-change="data.ModifyFilter(client)" aria-label="No Ink Effects">
+						{{client.name}}
+					</md-checkbox>
+				</div>
+				</md-grid-tile>
+			</md-grid-list>
+		</md-dialog-content>
+		<md-dialog-actions class="padding-24">
+			<p class="orange" ng-if="!data.currentUser.attributes.emailVerified">You cannot send a program until you've verified your email address.
+				<br>Visit your account page to verify
+			</p>
+			<md-button class="md-raised md-accent" ng-click="data.sendProgramme()" ng-disabled="!data.currentUser.attributes.emailVerified" ng-if="data.$storage.SelectedClients.length > 0">Send Program</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

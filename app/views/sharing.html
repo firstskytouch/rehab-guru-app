@@ -1,0 +1,103 @@
+<div ng-include src="'views/partials/accountSubHeader.html'" class="header-background"></div>
+<md-content flex layout="column"  layout-align="start center" md-scroll-y>
+	<div layout="row" flex="noshrink" layout-align="center center" class="sharing-content">
+		<form name="form" ng-submit="doLoginAction(user)" class="sharing-form" role="form" layout="column" layout-align="start start">
+			<p><label class="account-title">Program Sharing</label></p>
+			<div ng-if="userAccess === 'free'">
+				<label><p>To share programs you must be a paid user. You can signup on the <a ui-sref="subscription">Subscription Page</a></p><label>
+				<p><label class="account-title">Sign up to Rehab Guru Pro and get:<label></p>
+				<div layout="column" layout-align="center start">
+					<div layout="row" layout-align="center center">
+						<img src="images/image-clip/circle1.png" alt=""><label>Unlimited Clients</label>
+					</div>
+					<div layout="row" layout-align="center center">
+						<img src="images/image-clip/circle2.png" alt=""><label>Unlimited Templates</label>
+					</div>
+					<div layout="row" layout-align="center center">
+						<img src="images/image-clip/circle3.png" alt=""><label>Unlimited Favourites</label>
+					</div>
+					<div layout="row" layout-align="center center">
+						<img src="images/image-clip/circle4.png" alt=""><label>Unlimited Sending</label>
+					</div>
+					<div layout="row" layout-align="center center">
+						<img src="images/image-clip/circle5.png" alt=""><label>Publisher Access</label>
+					</div>
+				</div>
+			</div>
+			<div ng-if="userAccess !== 'free'">
+				<p>Sharing allows you to share your programs with other Rehab Guru users by activating sharing and sending them a Share Key</p>
+				<p>Please read the <a class="orange" href="http://rehabguru.com/RehabGuruBetaUserGuide.pdf" target="_blank">user guide</a> before using sharing features</p>
+				<hr>
+				<md-button ng-if="!user.shareKey" ng-click="turnOnSharing()" class="md-raised">Turn on Sharing</md-button>
+				<p><label class="account-title">Your Share Key is: <label></p><p>{{user.shareKey}}</p>
+				<hr>
+				<p><label class="account-title">Subscribe to Template Feed<label></p>
+				<h5>Want to share another persons exercise programmes?</h5>
+				<div layout="column" layout-align="center start">
+					<div layout="row" layout-align="center center">
+						<img src="images/image-clip/circle1.png" alt="" hide-xs hide-sm hide-md><label>Ask for their sharing key and enter this into the 'sharing key' box below.</label>
+					</div>
+					<div layout="row" layout-align="center center">
+						<img src="images/image-clip/circle2.png" alt="" hide-xs hide-sm hide-md><label>Write a memorable feed name of your own choice into the 'feed name' box and select 'subscribe to Feed'.</label>
+					</div>
+					<div layout="row" layout-align="center center">
+						<img src="images/image-clip/circle3.png" alt="" hide-xs hide-sm hide-md><label>Once complete, the other users programmes will appear on your templates page.</label>
+					</div>
+					<div layout="row" layout-align="center center">
+						<img src="images/image-clip/circle4.png" alt="" hide-xs hide-sm hide-md><label>You will also notice that a new option will appear in the left tool bar within your templates page to view programmes that are solely from that user.</label>
+					</div>
+				</div>
+				<div layout="row" layout-xs="column" layout-align="space-around center" flex>
+					<div flex-gt-xs="45" layout-fill>
+						<md-input-container class="md-block">
+							<label class="control-label">Sharing Key</label>
+							<input class="input-md" type="text" ng-model="subscriptionObject.feedId">
+						</md-input-container>
+					</div>
+					<div flex-gt-xs="45" layout-fill>
+						<md-input-container class="md-block">
+							<label class="control-label">Feed Name</label>
+							<input class="input-md" type=" text " ng-model="subscriptionObject.niceName ">
+						</md-input-container>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<div layout="row" flex>
+					<div flex></div>
+					<md-button ng-click="subscribeToFeed(subscriptionObject)" class="md-raised md-primary subscribe-button">Subscribe to Feed</md-button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div layout="row" flex="noshrink" layout-align="center center" class="sharing-subscriptions">
+		<div class="full-width" flex="noshrink" layout="column" layout-align="center center">
+			<div ng-if="currentSubscriptions.length > 0" layout-fill>
+				<p><label class="account-title">Current Feed Subscriptions</label></p>
+				<h5>The program feed have already subscibed to are listed below</h5>
+				<p ng-if="currentSubscriptions.length === 0">You have not subscribed to any feeds yet</p>
+				<md-list>
+					<md-list-item ng-repeat="subscription in currentSubscriptions track by $index" ng-click="null" class="list-group-item md-whiteframe-2dp white-bg">
+						<div flex="30" layout="row">
+							<label class="round-name-bg" layout="row" layout-align="center center">{{getAbbr(subscription.niceName)}}</label>
+							&nbsp;
+							<label flex>{{subscription.niceName}}</label>
+						</div>
+						<div flex>
+							<label>{{subscription.feedId}}</label>
+						</div>
+						<div>
+							<md-button ng-click="removeSubscription(subscription, $index)" class = "md-raised md-mini md-accent md-badge" hide-xs>
+								<md-icon>delete_sweep</md-icon>
+								Remove
+							</md-button>
+							<md-button ng-click="removeSubscription(subscription, $index)" class = "md-icon-button md-mini " hide-gt-xs>
+								<md-icon>delete_sweep</md-icon>
+							</md-button>
+						</div>
+						<md-divider></md-divider>
+					</md-list-item>
+				</md-list>
+			</div>
+		</div>
+	</div>
+<md-content>

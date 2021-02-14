@@ -1,0 +1,229 @@
+.text-common {
+    font-size: 20px;
+}
+
+.account-title {
+    font-size: 18px;
+    color: #363737;
+}
+
+.text-hint {
+    font-size: 13px;
+}
+
+.txt-name {
+    font-size: 22pt;
+}
+
+.txt-email {
+    color: #808080;
+    font-size: 15px;
+}
+
+.txt-21pt {
+    font-size: 21pt;
+}
+
+.txt-21px {
+    font-size: 21px;
+}
+
+.txt-43px {
+    font-size: 43px;
+}
+
+.txt-43pt {
+    font-size: 43pt;
+}
+
+.text-list {
+    color: #808080;
+}
+
+.text-pro {
+    color: #2B3737;
+    font-weight: bold;
+    text-align: center;
+}
+
+.logout-button {
+    width: 120px;
+    height: 41px;
+}
+
+.subscribe-button {
+    width: 172px;
+    height: 42px;
+}
+
+.pp-sign-up {
+    width: 184px;
+    height: 42px;
+}
+
+.subscription-bg {
+    width: 1140px;
+    height: 587px;
+}
+
+img.subscription-img {
+    width: 466px;
+    height: 597px;
+}
+
+img.subscription-img2 {
+    width: 181px;
+    height: 181px;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.subscription-content {
+    background-image: url('../images/image-clip/img_subscription1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.subscription-form {
+    background-color: $board-bg;
+    // margin: 32px 16px;
+    // opacity:0.6;
+}
+@media (min-width: 1280px) {
+    .subscription-content {
+        background-size: 50%;
+        width: 1140px;
+    }
+
+    .subscription-form {
+        width: 50%;
+        margin-left: 50%;
+    }
+}
+
+.account-form {
+    width: 605px;
+    background-color: $board-bg;
+    padding: 62px 82px 47px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+.customise-form {
+    width: 80%;
+    background-color: $board-bg;
+    padding: 32px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+.frame-user {
+    padding: 50px 60px;
+}
+@media (max-width: 600px) {
+    .account-form {
+        padding: 32px 16px;
+    }
+
+    .frame-user {
+        padding: 32px;
+    }
+}
+
+.sharing-form {
+    width: 100%;
+    background-color: $board-bg;
+    padding: 36px 46px;
+}
+
+.sharing-subscriptions {
+    width: 1140px;
+    margin-bottom: 32px;
+}
+
+.sharing-content {
+    width: 90%;
+    margin-top: 32px;
+    background-image: url('../images/image-clip/img_sharing2.jpg');
+    background-size: contain;
+    background-repeat: space;
+}
+@media (min-width: 960px) {
+    .sharing-content {
+        background-image: url('../images/image-clip/img_sharing.jpg');
+        padding-left: 150px;
+        padding-right: 50px;
+    }
+}
+@media (min-width: 1280px) {
+    .sharing-content {
+        width: 1140px;
+        padding-left: 180px;
+        padding-right: 60px;
+    }
+}
+@media (max-width: 1280px) {
+    .sharing-form {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .sharing-subscriptions {
+        margin-bottom: 32px;
+        width: 90%;
+    }
+}
+@media (max-width: 959px) {
+    .frame-user {
+        padding: 32px;
+    }
+
+    .account-form {
+        width: 90%;
+    }
+
+    .sharing-content {
+        width: 90%;
+        padding-top: 180px;
+        padding-bottom: 60px;
+    }
+}
+@media (max-width: 599px) {
+    .sharing-content {
+        width: 100%;
+        padding-top: 120px;
+        padding-bottom: 40px;
+    }
+
+    .sharing-subscriptions {
+        width: 100%;
+    }
+}
+@media (min-width: 960px) {
+    .frame-user {
+        padding: 32px;
+    }
+}
+
+.round-name-bg {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    color: white;
+}
+
+.my-title {
+    padding-top: 0;
+}
+
+md-chips .md-chips {
+    box-shadow: 0 1px rgba(0,0,0,0);
+}
+
+.round-icon {
+    border-radius: 50%;
+    background-color: $primary;
+    color: $light-grey;
+}

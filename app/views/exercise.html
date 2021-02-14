@@ -1,0 +1,77 @@
+<div ng-include src="'views/partials/subHeader.html'"></div>
+<md-content flex layout="column" md-scroll-y>
+	<div layout="row" flex="noshrink" layout-align="center start">
+		<div flex="95" flex-xs="70" flex-gt-md="80">
+			<div class="height-48"></div>
+			<div layout="row" layout-align="center center" layout-xs="column" layout-align-xs="center stretch">
+				<div flex-gt-xs="55" class="empty-error">
+					<div class="inner-addon right-addon exercise-search" flex layout="row">
+						<md-icon class="glyphicon glyphicon-search round-icon">search</md-icon>
+						<input placeholder="Search Templates (e.g 'Thoracic Mobility')" type="search" ng-model="search.term" ng-change="runSearch(search.term)" class="clients-search form-control" flex>
+					</div>
+				</div>
+				<div layout="row" layout-align="center center" class="exercise-button" flex>
+					<div flex></div>
+					<md-button class="md-accent btn-exercise" ng-click="openFilters($event)" aria-label="openFilters" hide-xs hide-sm>
+						<md-icon md-svg-src="images/icon/piece-of-paper-and-pencil.svg"></md-icon>
+						Create
+					</md-button>
+					<md-button class="md-icon-button md-accent  btn-exercise" ng-click="openFilters($event)" aria-label="openFilters" hide-gt-sm>
+						<md-icon md-svg-src="images/icon/piece-of-paper-and-pencil.svg"></md-icon>
+					</md-button>
+					<div flex></div>
+					<md-button class="md-accent btn-exercise" ng-click="openFilters($event)" aria-label="openFilters" hide-xs hide-sm>
+						<md-icon md-svg-src="images/icon/funnel.svg"></md-icon>
+						Filters
+					</md-button>
+					<md-button class="md-icon-button md-accent btn-exercise" ng-click="openFilters($event)" aria-label="openFilters" hide-gt-sm>
+						<md-icon md-svg-src="images/icon/funnel.svg"></md-icon>
+					</md-button>
+					<div flex></div>
+					<md-button class="md-accent btn-exercise" ng-click="showFavourites()" aria-label="showFavourites" hide-xs hide-sm>
+						<md-icon md-svg-src="images/icon/heart.svg"></md-icon>
+						Filters
+					</md-button>
+					<md-button class="md-icon-button md-accent  btn-exercise" ng-click="showFavourites()" aria-label="showFavourites" hide-gt-sm>
+						<md-icon md-svg-src="images/icon/heart.svg"></md-icon>
+					</md-button>
+					<div flex></div>
+					<md-button class="md-accent btn-exercise" ng-click="showSavedExercises()" aria-label="showSavedExercises" hide-xs hide-sm>
+						<md-icon md-svg-src="images/icon/download.svg"></md-icon>
+						Filters
+					</md-button>
+					<md-button class="md-icon-button md-accent" ng-click="showSavedExercises()" aria-label="showSavedExercises" hide-gt-sm>
+						<md-icon md-svg-src="images/icon/download.svg"></md-icon>
+					</md-button>
+					<div flex></div>
+				</div>
+			</div>
+			<md-chips ng-if="ActiveFilters.length" ng-model="ActiveFilters" class="custom-chips small-chips" readonly="true" md-removable="true">
+				<md-chip-template>
+					<span>
+						<small>{{$chip.name}}</small>
+					</span>
+				</md-chip-template>
+			</md-chips>
+			<md-button class="red full-width" ng-if="ActiveFilters.length > 0" ng-click="clearFilters()">Clear Filters</md-button>
+			<br></br>
+			<div class="row full-width">
+				<div ng-include src="'views/partials/exerciseGrid.html'"></div>
+			</div>
+		</div>
+	</div>
+</md-content>
+<md-fab-speed-dial md-open="false" md-direction="left" class="added-exercise-indicator md-scale" ng-if="$storage.Programme.exerciseData.length">
+	<md-fab-trigger>
+		<md-button class="md-fab md-accent exercise-indicator-font">
+			{{$storage.Programme.exerciseData.length}}
+			<md-tooltip md-direction="top">
+				{{tooltip.title}}
+			</md-tooltip>
+		</md-button>
+	</md-fab-trigger>
+
+	<md-fab-actions class="black">
+		<div ng-include src="'views/popovers/exerciseList.html'"></div>
+	</md-fab-actions>
+</md-fab-speed-dial>

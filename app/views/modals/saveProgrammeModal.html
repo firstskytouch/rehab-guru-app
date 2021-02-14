@@ -1,0 +1,64 @@
+<md-dialog id="saveProgrammeModal" class="custom-dialog">
+	<div layout="row" layout-align="center center">
+		<h3>Save</h3>
+		<span flex></span>
+		<md-button class="md-icon-button" ng-click="data.cancel()">
+			<md-icon aria-label="Close dialog">close</md-icon>
+		</md-button>
+	</div>
+	<md-dialog-content>
+		<md-tabs md-selected="data.selectedIndex">
+			<md-tab label="Save">
+				<md-content class="md-dialog-content main-bg">
+					<h3>Save program as a new Template</h3>
+					<br></br>
+					<label for="programmeTitle" class="control-label">Enter the Program title and click save button to save program as a new template</label>
+					<md-input-container class="md-block">
+						<input id="programmeTitle" placeholder="{{$storage.Client.name.name + ' ' + currentDate || 'Programme Title'}}" ng-model="data.$storage.Programme.programmeTitle">
+					</md-input-container>
+				</md-content>
+			</md-tab>
+			<md-tab label="Update">
+				<md-content class="md-dialog-content main-bg">
+					<h3>Update Existing Program</h3>
+					<br></br>
+					<label for="programmeTitle" class="control-label">To update an existing program, select the title below and click the update button to update the template</label>
+					<md-chips ng-model="data.$storage.SelectedProgramme" md-autocomplete-snap md-require-match="true" md-max-chips="1">
+						<md-autocomplete
+								md-items="programme in data.userProgrammes"
+								md-selected-item="programme.selectedItem"
+								md-search-text="programme.searchText"
+								md-item-text="programme.programmeTitle"
+								placeholder="Search and select Templete..."
+								md-menu-class="autocomplete-custom-template">
+							<md-item-template>
+								<p>
+									<span> {{programme.programmeTitle}} </span>
+								</p>
+							</md-item-template>
+						</md-autocomplete>
+						<md-chip-template>
+							<span>
+								<small>{{$chip.programmeTitle}}</small>
+							</span>
+						</md-chip-template>
+					</md-chips>
+					<!-- <div class="input-group">
+						<ui-select multiple limit="1" on-select="selectProgramme($item, $model)" theme="bootstrap">
+						</ui-select>
+					</div> -->
+				</md-content>
+			</md-tab>
+			<md-tab label=" ">
+			</md-tab>
+		</md-tabs>
+	</md-dialog-content>
+	<md-dialog-actions>
+		<div ng-if="!data.selectedIndex">
+			<md-button ng-disabled="!data.currentUser.attributes.emailVerified || data.$storage.Programme.programmeTitle.length < 1" ng-click="data.saveProgramme()" class="md-raised md-primary">Save</md-button>
+		</div>
+		<div ng-if="data.selectedIndex">
+			<md-button ng-disabled="$storage.SelectedProgramme.length === 0" ng-click="data.updateProgramme()" class="md-raised md-primary">Update</md-button>
+		</div>
+	</md-dialog-actions>
+</md-dialog>

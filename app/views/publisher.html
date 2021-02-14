@@ -1,0 +1,94 @@
+<md-content layout="column full-screen" layout-align="center center">
+  <div class="my-container" layout="row" layout-align="center start">
+    <div layout="column" flex="95" flex-gt-md="80" style="min-height:100%">
+      <div class="well no-print" layout="column" layout-align="center center" layout-padding>
+        <h2>Publish Settings</h2>
+        <div layout-gt-sm="row" layout="column" layout-align="space-around center">
+          <div  layout-xs="column" layout="row" flex-md="50" flex-gt-md="60" layout-align="space-around center">
+            <div flex-gt-xs="50">
+              <p>Font size</p>
+              <md-button class="md-raised" ng-click="changeFontSize(10)">Small</md-button>
+              <md-button class="md-raised" ng-click="changeFontSize(12)">Medium</md-button>
+              <md-button class="md-raised" ng-click="changeFontSize(16)">Large</md-button>
+            </div>
+            <div flex-gt-xs="50">
+              <p>Image size</p>
+              <md-button class="md-raised" ng-click="changeImageSize('small')">Small</md-button>
+              <md-button class="md-raised" ng-click="changeImageSize('medium')">Medium</md-button>
+              <md-button class="md-raised" ng-click="changeImageSize('large')">Large</md-button>
+            </div>
+          </div>
+          <div layout="row" layout-xs="column" flex-md="50" flex-gt-md="40" layout-align="space-around center">
+            <div layout="row" alyout-align="center center" flex-gt-sm="60" flex-sm="50">
+              <div layout="column" layout-align="center center">
+                <p>Images <small></small></p>
+                <md-switch ng-model="showImg" id="showImg" class="green" ng-change="message=showImg?'On':'Off'">
+                  {{ message }}
+                </md-switch>
+              </div>
+              <div layout="column" layout-align="center center">
+                <p>High Quality <small></small></p>
+                <md-switch ng-model="imageQuality" id="imageQuality" ng-change="qualityMsg=imageQuality?'On':'Off'" class="green">
+                  {{ qualityMsg }}
+                </md-switch>
+              </div>
+            </div>
+            <div>
+               <!-- flex-gt-sm="40" flex-sm="50"  -->
+              <md-button class="md-raised md-accent pull-right no-print" ng-click="print()"><i class="ion-ios-printer-outline"></i> Print / Download
+              </md-button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="previewContainer" layout="column" layout-align="center center">
+        <div layout="column" layout-align="center start">
+          <img class="programme-header" ng-src="images/Rehab_Guru_Programme_Header{{brandingImage()}}.png" alt="Rehab Guru Logo">
+          <h4 class="programme-preview-title my-title">{{$storage.Programme.programmeTitle}}</h4>
+
+          <div class="exercise-tile-container full-width" layout="column" layout-align="start start">
+             <!-- layout-fill -->
+            <div ng-if="$storage.Programme.exerciseData.length === 0" class="text-center">
+              <label>You don't have any exercises in your programme yet!</label>
+            </div>
+            <div class="well exercise-well full-width" id="{{$index}}" ng-repeat="exercise in $storage.Programme.exerciseData" layout="column" layout-align="start start">
+               <!-- layout-fill -->
+              <h3 ng-style="fontStyle.title">{{exercise.exerciseName}}</h3>
+              <div>
+                <div ng-if="showImg" class="thumbnailImage {{imageSize}}" ng-repeat="image in exercise.images track by $index">
+                  <img ng-if="isNumber(image)" src="https://rehabgurufiles.s3.amazonaws.com/{{getImageQuality(imageQuality)}}/{{image}}.jpg" alt="">
+                  <img ng-if="!isNumber(image)" src="{{secureUrl(image)}}" alt="">
+                </div>
+              </div>
+
+              <h5><span class="{{brandColour()}}" ng-style="fontStyle.description">Description</span></h5>
+              <li ng-style="fontStyle.description">{{exercise.exerciseDescription}}</li>
+              <ul class="row container my-title" ng-if="exercise.Params">
+                <li ng-style="fontStyle.description" ng-repeat="param in exercise.Params track by $index" class="param-list-item {{brandColour()}}"><span>{{param.param}} : </span>{{param.childParam}}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <img class="programme-header" ng-src="images/Rehab_Guru_Programme_Footer{{brandingImage()}}.png" alt="Rehab Guru Logo">
+        </div>
+      </div>
+    </div>
+  </div>
+</md-content>
+<style type="text/css">
+  @media screen {
+    div.divFooter {
+      display: none;
+    }
+  }
+
+  @media print {
+    div.divFooter {
+      position: fixed;
+      font-size: 6px;
+      color: #fff;
+      bottom: 0;
+    }
+  }
+</style>

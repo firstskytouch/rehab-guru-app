@@ -1,0 +1,90 @@
+<md-content class="main-bg full-screen" layout="column">
+    <div ng-include src="'views/partials/accountSubHeader.html'"></div>
+    <md-content class="md-padding main-bg" layout="row">
+        <div ng-if="currentPlan === 'free'" class="notLoggedInSubscription">
+            User is Free!
+        </div>
+        <div class="container md-padding customize-main-wraper">
+            <div class="page-title">
+                <span class="title-background">Customize</span>
+                <h1>Customize</h1>
+            </div>
+            <div layout="row" layout-xs="column">
+                <div flex-lg="30" flex-gt-md="30" flex-gt-sm="100">
+                    <div md-color-picker="primaryColor.options" label="Primary Color" ng-model="customSettings.primaryColor" ng-change="updateGradient()"></div>
+                </div>
+                <div flex-lg="30" flex-gt-md="30" flex-offset-md="5" flex-offset-lg="5" flex-gt-sm="100" flex-offset-sm="5">
+                    <div md-color-picker="secondaryColor.options" label="Secondary Color" ng-model="customSettings.secondaryColor" ng-change="updateGradient()"></div>
+                </div>
+                <div flex-lg="30" flex-gt-md="30" flex-offset-lg="5" flex-offset-md="5" class="dropzone-main-content" flex="nogrow" flex-gt-sm="100" flex-offset-sm="5">
+                    <div class="dropzone" ngf-drop ngf-select ngf-drag-over-class="'dragover'" ng-model="logoImgFile" ngf-pattern="image/*" accept="image/*">
+                        <img ng-src="{{selectedLogo}}" class="selected-logo ng-hide" ng-show="selectedLogo">
+                        <p ng-show="!selectedLogo">Upload/Drop Image</p>
+                    </div>
+                    <img src="images/close.png" class="close-icon ng-hide" ng-show="selectedLogo" ng-click="removeLogoImage()">
+                </div>
+            </div>
+            <br class="hide-gt-sm show-sm">
+            <div layout="row" layout-xs="column">
+                <div flex-lg="30" flex-md="30" flex-gt-sm="100">
+                    <div md-color-picker="hyperLinkColor.options" label="Hyperlink Color" ng-model="customSettings.hyperLinkColor" ng-change="onHyperLinkColorChange()"></div>
+                </div>
+            </div>
+            <div layout="row" layout-xs="column">
+                <div flex-lg="30" flex-md="30" flex-sm="100">
+                    <label>Header Gradient</label>
+                    <md-switch id="enabled" name="enabled" ng-model="customSettings.headerGradient" on="Yes" off="No" class="green" ng-change="updateHeaderGradient(customSettings.headerGradient)">{{customSettings.headerGradient ? 'Yes' : 'No'}}</md-switch>
+                </div>
+                <div flex-lg="70" flex-md="70" flex-sm="100">
+                    <label>Gradient Style</label>
+                    <div style="padding-top: 15px;" ng-class="{'disable-gradient-box' : !customSettings.headerGradient}">
+                        <div class="gradient-box" customstyle="{{gradientLeftToRight}}" ng-class="{'selected' : selectedGradientBox === 'linearLR'}" ng-click="selectGradient('linearLR')">
+                            <div></div>
+                        </div>
+                        <div class="gradient-box" customstyle="{{gradientRedial}}" ng-class="{'selected' : selectedGradientBox === 'redial'}" ng-click="selectGradient('redial')">
+                            <div></div>
+                        </div>
+                        <div class="gradient-box" customstyle="{{gradientRightToLeft}}" ng-class="{'selected' : selectedGradientBox === 'linearRL'}" ng-click="selectGradient('linearRL')">
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div layout="column" class="preview-container" ng-style="{'margin-top':$mdMedia('xs') ? '10px': '70px'}">
+                <div class="preview-title">Preview</div>
+                <md-card ng-class="{'xsm-preview':$mdMedia('xs')}">
+                    <img ng-src="/images/browser-top.png" class="md-card-image" alt="Browser Images">
+                    <md-card-content>
+                        <div class="preview-header-main" customstyle="{{headerBackground}}">
+                            <img ng-src="{{selectedLogo}}" class="preview-selected-logo" ng-show="selectedLogo">
+                            <div class="nav-link"><span>Home</span><span>Programs</span></div>
+                        </div>
+                        <div class="preview-content">
+                            <h2>Running Strength</h2>
+                            <div>
+                                <div class="content-action">
+                                    <span customstyle="{{hrefColor}}" class="float-left">TOGGLE TEMPLATE </span>
+                                    <span customstyle="{{hrefColor}}" class="float-right">Pdf</span>
+                                </div>
+                                <div class="content-main-area">
+                                    <h3>Soleus Stretch</h3>
+                                    <div class="thumbnailImage" style="background-image: url('https://rehabgurufiles.s3.amazonaws.com/medium/10132.jpg'); background-size: contain;" ng-class="{'lg-thumbnail':!$mdMedia('xs')}"></div>
+                                    <div class="thumbnailImage" style="background-image: url('https://rehabgurufiles.s3.amazonaws.com/medium/10131.jpg'); background-size: contain;" ng-class="{'lg-thumbnail':!$mdMedia('xs')}"></div>
+                                    <div class="clearfix"></div>
+                                    <h5><span class="orange-text">Description</span></h5>
+                                    <li>Step forward into a step stance and take the front knee forward keeping the heel down and hold</li>
+                                    <ul class="params">
+                                        <li><span class="orange-text"> Reps: </span>3</li>
+                                        <li><span class="orange-text"> Hold: </span>30 Sec</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </md-card-content>
+                </md-card>
+            </div>
+            <div class="float-right margin-top-16">
+                <md-button ng-click="saveCustomSettings()" class="md-accent md-raised">Save</md-button>
+            </div>
+    </md-content>
+</md-content>

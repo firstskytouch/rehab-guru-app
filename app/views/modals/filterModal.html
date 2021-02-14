@@ -1,0 +1,44 @@
+<md-dialog class="custom-dialog">
+	<div layout="row" layout-align="center center">
+		<h3 >Filters</h3>
+		<span flex></span>
+		<md-button class="md-icon-button" ng-click="data.cancel()">
+			<md-icon md-svg-src="images/icon/cancel.svg"></md-icon>
+		</md-button>
+	</div>
+	<md-dialog-content>
+		<md-tabs>
+		  <md-tab ng-repeat="tabs in data.Filters track by $index" label="{{tabs.title}}">
+		  	<div layout="row" layout-align="center center" class="padding-left-24">
+			  	<h3 flex="100">
+			  		{{tabs.title}}
+			  	</h3>
+		  	</div>
+		  	<div layout="row" layout-align="center center" class="padding-left-24">
+				<md-grid-list md-cols-xs="1" md-cols="2" md-row-height="fit" ng-style="{'height': {{(tabs.filters.length / 2 + 1) * 30}} + 'px'}"
+						md-gutter="12px" md-gutter-gt-sm="8px" flex="100" hide-xs>
+					<md-grid-tile ng-repeat="tag in tabs.filters | orderBy: 'name' track by $index" class="height-32" layout-align="start start">
+					<div flex="100">
+						<md-checkbox md-no-ink ng-model="tag.checked" ng-change="data.ModifyFilter(tag)" aria-label="No Ink Effects">
+							{{tag.name}}
+						</md-checkbox>
+					</div>
+					</md-grid-tile>
+				</md-grid-list>
+				<md-grid-list md-cols-xs="1" md-cols="2" md-row-height="fit" ng-style="{'height': {{(tabs.filters.length / 2 + 1) * 60}} + 'px'}"
+						md-gutter="12px" md-gutter-gt-sm="8px" flex="100" hide-gt-xs>
+					<md-grid-tile ng-repeat="tag in tabs.filters | orderBy: 'name' track by $index" class="height-32" layout-align="start start">
+					<div flex="100">
+						<md-checkbox md-no-ink ng-model="tag.checked" ng-change="data.ModifyFilter(tag)" aria-label="No Ink Effects">
+							{{tag.name}}
+						</md-checkbox>
+					</div>
+					</md-grid-tile>
+				</md-grid-list>
+			</div>
+		  </md-tab>
+		</md-tabs>
+	</md-dialog-content>
+	<md-dialog-actions>
+	</md-dialog-actions>
+</md-dialog>

@@ -1,0 +1,126 @@
+body,
+html {
+    height: 100%;
+    position: relative;
+    background-color: #eaeef1;
+}
+
+md-content {
+    background-color: #eaeef1;
+}
+
+.main-bg {
+    background-color: #eaeef1;
+}
+
+.content {
+    width: 60%;
+}
+
+hr {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-top: 1px solid #eee;
+}
+
+.page-title {
+    max-height: 80px;
+
+    h1 {
+        letter-spacing: 1.5px;
+        font-size: 22px;
+        color: $primary;
+        z-index: 1;
+        top: -75px;
+        position: relative;
+    }
+
+    span {
+        position: relative;
+        top: 0;
+        opacity: 1;
+        font-size: 70px;
+        letter-spacing: 10px;
+        display: block;
+        color: #e5e9ec;
+        z-index: 0;
+    }
+}
+
+h2 {
+    color: $dark-grey;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: $dark-grey;
+}
+
+h4 {
+    color: $dark-grey;
+}
+
+h5 {
+    color: $dark-grey;
+}
+
+a {
+    color: $dark-grey;
+}
+
+p {
+    color: $dark-grey;
+}
+
+.md-button {
+    color: $dark-grey;
+}
+
+.md-button.md-raised {
+    color: $dark-grey;
+}
+
+md-checkbox {
+    color: $dark-grey;
+}
+
+md-expansion-panel md-expansion-panel-collapsed .md-title {
+    color: $dark-grey;
+}
+
+md-expansion-panel .md-expansion-panel-header-container .md-title {
+    color: $dark-grey;
+}
+
+md-input-container .md-input {
+    color: $dark-grey;
+    border-width: 0 0 2px 0;
+}
+
+.red {
+    color: $red;
+}
+
+.white {
+    color: $white;
+}
+
+.orange {
+    color: $orange;
+}
+
+.accent {
+    color: $primary;
+}
+
+.paginaton {
+    border: 2px solid #cfd2d5;
+    border-radius: 50px;
+}
+
+.md-sidenav-left {
+    -webkit-box-shadow: 1px 0 8px 0 rgba(0,0,0,0.35);
+    -moz-box-shadow: 1px 0 8px 0 rgba(0,0,0,0.35);
+    box-shadow: 1px 0 8px 0 rgba(0,0,0,0.35);
+}

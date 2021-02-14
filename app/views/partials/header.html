@@ -1,0 +1,81 @@
+<div ng-controller="HeaderCtrl">
+	<md-toolbar class="md-accent common-header" layout="column" layout-align="center center" md-scroll-shrink  ng-if="location.url() != '/login' && location.url() != '/register'">
+		<div layout="row" class="container_header" layout-align="center center">
+			<div flex layout="row" layout-align-xs="center center" layout-align-sm="center center">
+				<a href="#/">
+					<img class="header-logo" src="images/rehabgurulogo.png" alt="Rehab Guru Logo">
+				</a>
+			</div>
+			<md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links" hide-xs hide-sm>
+				<md-nav-item md-nav-href="#program" class="menu" name="program">
+					<md-icon md-svg-src="images/icon/edit.svg"></md-icon>
+					<span>Creator</span>
+				</md-nav-item>
+				<md-nav-item md-nav-href="#clients" class="menu" name="clients">
+					<md-icon md-svg-src="images/icon/user.svg"></md-icon>
+					<span>Clients</span>
+				</md-nav-item>
+				<md-nav-item md-nav-href="#account" class="menu" name="account">
+					<md-icon md-svg-src="images/icon/key.svg"></md-icon>
+					<span>Account</span>
+				</md-nav-item>
+				<md-nav-item md-nav-href="#https://support.rehabguru.com" class="menu" target="_blank" name="help">
+					<md-icon md-svg-src="images/icon/lifebuoy.svg"></md-icon>
+					<span>Help</span>
+				</md-nav-item>
+			</md-nav-bar>
+			<md-button class="md-icon-button md-primary" ng-click="toggleRight()" aria-label="Settings" hide-gt-sm>
+				<md-icon>menu</md-icon>
+			</md-button>
+		</div>
+	</md-toolbar>
+	<md-sidenav
+			class="md-sidenav-right"
+			md-component-id="right"
+			md-whiteframe="4">
+		<div layout="row" layout-align="space-around center">
+			<h1 class="md-toolbar-tools" flex>Sidenav Left</h1>
+			<md-button class="md-icon-button" ng-click="closeRight()">
+				<md-icon md-svg-src="images/icon/cancel.svg"></md-icon>
+			</md-button>
+		</div>
+		<md-content layout-padding layout="column">
+			<md-button class="nav-btn text-left" ng-href="#program">
+				<md-icon md-svg-src="images/icon/edit.svg"></md-icon>
+				<span>Creator</span>
+			</md-button>
+			<md-button class="nav-btn text-left" ng-href="#clients">
+				<md-icon md-svg-src="images/icon/user.svg"></md-icon>
+				<span>Clients</span>
+			</md-button>
+			<md-button class="nav-btn text-left" ng-href="#account">
+				<md-icon md-svg-src="images/icon/key.svg"></md-icon>
+				<span>Account</span>
+			</md-button>
+			<md-button class="nav-btn text-left" ng-href="#account">
+				<md-icon md-svg-src="images/icon/lifebuoy.svg"></md-icon>
+				<span>Help</span>
+			</md-button>
+		</md-content>
+		<md-content layout-padding layout="column">
+			<h1 class="md-toolbar-tools" flex>ANNOUNCEMENTS</h1>
+			<hr style="margin: 0; padding: 0;">
+			<br>
+			<label>Lorem ipsum dolor sit amet, con sectetur adipiscing elit. Phasellus at purus...</label>
+			<div layout="row">
+				<div flex></div>
+				<label>-JOHN</label>
+			</div>
+			<label>Praesent rhoncus justo element um eros porttitor</label>
+			<div layout="row">
+				<div flex></div>
+				<label>-OLIVIA</label>
+			</div>
+			<label>Fusce condimentum ex id luctus bibendum</label>
+			<div layout="row">
+				<div flex></div>
+				<labelp>-ALIA</label>
+			</div>
+		</md-content>
+	</md-sidenav>
+</div>

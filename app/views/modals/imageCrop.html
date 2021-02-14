@@ -1,0 +1,19 @@
+<md-dialog class="custom-dialog">
+    <div layout="row" layout-align="center center">
+        <h3>Crop Image</h3>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+            <md-icon aria-label="Close dialog">close</md-icon>
+        </md-button>
+    </div>
+    <md-dialog-content>
+        <img ngf-src="data.logoImgFile" alt="Picture" class="cropper-hidden" id="previewImage" elem-ready="initCroper()">
+    </md-dialog-content>
+    <md-dialog-actions>
+		<div layout="row" layout-align="center center" class="image-edit-action full-width">
+		  <div><md-button class="md-fab md-mini" ng-click="handelZoom('0.1')"><i class="material-icons">zoom_in</i></md-button></div>
+		  <div><md-button class="md-fab md-mini" ng-click="handelZoom('-0.1')"><i class="material-icons">zoom_out</i></md-button></div>
+		</div>
+        <md-button class="md-raised md-accent" ng-click="doneCroping()">Done</md-button>
+    </md-dialog-actions>
+</md-dialog>

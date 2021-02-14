@@ -1,0 +1,51 @@
+<div ng-include src="'views/partials/accountSubHeader.html'" class="header-background"></div>
+<md-content flex layout="column" md-scroll-y>
+	<div layout="row" flex="noshrink" layout-align="center center">
+		<form name="form" ng-submit="register(user)" class="account-form" role="form">
+			<div layout="row">
+				<div flex>
+					<md-input-container class="md-block">
+						<label class="txt-name">{{user.firstName}} {{user.lastName}}</label>
+						<input class="txt-email" name="email" id="email" ng-model="user.email" required>
+					</md-input-container>
+				</div>
+				<div>
+					<img src="images/icon/ic_edit.png"class="icon-48">
+				</div>
+			</div>
+			<div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
+				<md-input-container class="md-block">
+					<label class="txt-hint">FIRST NAME</label>
+					<input class="text-common" name="firstName" id="firstName" ng-model="user.firstName" required>
+				</md-input-container>
+				<label ng-show="form.firstName.$dirty && form.firstName.$error.required" class="help-block">First name is required</label>
+			</div>
+			<div class="form-group" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
+				<md-input-container class="md-block">
+					<label class="txt-hint">LAST NAME</label>
+					<input class="text-common" name="lastName" id="lastName" ng-model="user.lastName" required>
+				</md-input-container>
+				<label ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Last name is required</label>
+			</div>
+			<div class="form-group" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required || currentUser.attributes.emailVerified != true }">
+				<md-input-container class="md-block">
+					<label class="txt-hint">Email Address</label>
+					<input class="text-common" name="email" id="email" ng-model="user.email" required>
+				</md-input-container>
+				<span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">Email is required</span>
+				<span ng-show="currentUser.attributes.emailVerified != true" class="help-block">Email is not verified! Click <a ng-click="resendEmailVerification(user)" href="">here</a> to resend verification.</span>
+			</div>
+			<div layout="row" layout-align="center center">
+				<label class="txt-email" for="email">Send a copy of prescriptions to your email address?</label>
+				<div flex></div>
+				<md-switch id="enabled" name="enabled" ng-model="user.config.copyPrescription" on="Yes" off="No" class="green md-primary">{{ user.config.copyPrescription ? 'Yes' : 'No'}}</md-switch>
+			</div>
+			<div layout="row" layout-align="end center">
+				<md-button ng-click="saveUser(user)" ng-disabled="!currentUser.attributes.emailVerified" class="md-accent md-raised logout-button material-icon">Save</md-button>
+				<label class="txt-email">OR</label>
+				<md-button class="md-primary md-raised logout-button" ng-click="doLogoutAction()" required>Logout</md-button>
+			</div>
+			<!-- -->
+		</form>
+	</div>
+</md-content>

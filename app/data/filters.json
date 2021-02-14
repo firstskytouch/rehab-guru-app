@@ -1,0 +1,307 @@
+{
+    "results": [
+
+        {
+            "title": "Difficulty",
+            "icon": "difficulty-icon",
+            "filters": [{
+                "name": "Easy",
+                "checked": false
+            }, {
+                "name": "Medium",
+                "checked": false
+            }, {
+                "name": "Hard",
+                "checked": false
+            }, {
+                "name": "Expert",
+                "checked": false
+            }]
+        },
+
+        {
+            "title": "Equipment",
+            "icon": "equipment-icon",
+            "filters": [{
+                "name": "Rope",
+                "checked": false
+            }, {
+                "name": "Cables",
+                "checked": false
+            }, {
+                "name": "Step Box",
+                "checked": false
+            }, {
+                "name": "Barbell",
+                "checked": false
+            }, {
+                "name": "Dumbbell",
+                "checked": false
+            }, {
+                "name": "Gym Ball",
+                "checked": false
+            }, {
+                "name": "Medicine Ball",
+                "checked": false
+            }, {
+                "name": "Bosu",
+                "checked": false
+            }, {
+                "name": "Resistance Bands",
+                "checked": false
+            }, {
+                "name": "Suspension Trainer",
+                "checked": false
+            }, {
+                "name": "Balance Cushions",
+                "checked": false
+            }, {
+                "name": "Markers",
+                "checked": false
+            }, {
+                "name": "No Equipment",
+                "checked": false
+            }, {
+                "name": "Bed",
+                "checked": false
+            }, {
+                "name": "Chair",
+                "checked": false
+            }, {
+                "name": "Dowel",
+                "checked": false
+            }, {
+                "name": "Ball",
+                "checked": false
+            }, {
+                "name": "Bench",
+                "checked": false
+            }, {
+                "name": "Towel",
+                "checked": false
+            }, {
+                "name": "Trampette",
+                "checked": false
+            }, {
+                "name": "Wobble Board",
+                "checked": false
+            }, {
+                "name": "Rocker Board",
+                "checked": false
+            }, {
+                "name": "PBU",
+                "checked": false
+            }, {
+                "name": "Gym Stick",
+                "checked": false
+            }, {
+                "name": "Powerbag",
+                "checked": false
+            }, {
+                "name": "Olympic Disk",
+                "checked": false
+            }, {
+                "name": "Foam Roller",
+                "checked": false
+            }, {
+                "name": "Kettlebell",
+                "checked": false
+            }]
+        }, {
+            "title": "Direction of Movement",
+            "icon": "direction-icon",
+            "filters": [{
+                "name": "Flexion",
+                "checked": false
+            }, {
+                "name": "Rotation",
+                "checked": false
+            }, {
+                "name": "Pronation",
+                "checked": false
+            }, {
+                "name": "Supination",
+                "checked": false
+            }, {
+                "name": "Extension",
+                "checked": false
+            }, {
+                "name": "Adduction",
+                "checked": false
+            }, {
+                "name": "Abduction",
+                "checked": false
+            }, {
+                "name": "External Rotation",
+                "checked": false
+            }, {
+                "name": "Internal Rotation",
+                "checked": false
+            }, {
+                "name": "Circumduction",
+                "checked": false
+            }, {
+                "name": "Inversion",
+                "checked": false
+            }, {
+                "name": "Eversion",
+                "checked": false
+            }, {
+                "name": "Horizontal",
+                "checked": false
+            }, {
+                "name": "Horizontal Flexion",
+                "checked": false
+            }, {
+                "name": "Horizontal Extension",
+                "checked": false
+            }, {
+                "name": "Side Flexion",
+                "checked": false
+            }, {
+                "name": "Protraction",
+                "checked": false
+            }, {
+                "name": "Retraction",
+                "checked": false
+            }, {
+                "name": "Ulnar Deviation",
+                "checked": false
+            }, {
+                "name": "Radial Deviation",
+                "checked": false
+            }]
+        },
+
+        {
+            "title": "Exercise Aim",
+            "icon": "aim-icon",
+            "filters": [{
+                "name": "Power",
+                "checked": false
+            }, {
+                "name": "Strength",
+                "checked": false
+            }, {
+                "name": "Flexibility",
+                "checked": false
+            }, {
+                "name": "Joint Mobility",
+                "checked": false
+            }, {
+                "name": "Balance & Proprioception",
+                "checked": false
+            }, {
+                "name": "Plyometric",
+                "checked": false
+            }, {
+                "name": "Eccentric Control",
+                "checked": false
+            }, {
+                "name": "Core Control",
+                "checked": false
+            }, {
+                "name": "Static Control",
+                "checked": false
+            }, {
+                "name": "Dynamic Control",
+                "checked": false
+            }, {
+                "name": "Taping",
+                "checked": false
+            }, {
+                "name": "Self Treatment",
+                "checked": false
+            }, {
+                "name": "Neural",
+                "checked": false
+            }, {
+                "name": "Olympic Lifts",
+                "checked": false
+            }, {
+                "name": "Posture",
+                "checked": false
+            }]
+        }, {
+            "title": "Muscle Group ",
+            "icon": "muscle-icon",
+            "filters": [{
+                "name": "Foot & Shin",
+                "checked": false
+            }, {
+                "name": "Calf",
+                "checked": false
+            }, {
+                "name": "Quads",
+                "checked": false
+            }, {
+                "name": "Hamstrings",
+                "checked": false
+            }, {
+                "name": "Groin & Hip Flexors",
+                "checked": false
+            }, {
+                "name": "Glutes ",
+                "checked": false
+            }, {
+                "name": "Back",
+                "checked": false
+            }, {
+                "name": "Abdominals",
+                "checked": false
+            }, {
+                "name": "Chest",
+                "checked": false
+            }, {
+                "name": "Rotator Cuff",
+                "checked": false
+            }, {
+                "name": "Scapula",
+                "checked": false
+            }, {
+                "name": "Neck",
+                "checked": false
+            }, {
+                "name": "Triceps",
+                "checked": false
+            }, {
+                "name": "Biceps",
+                "checked": false
+            }, {
+                "name": "Wrist & Hand",
+                "checked": false
+            }]
+        },
+
+        {
+            "title": "Joint",
+            "icon": "joint-icon",
+            "filters": [{
+                "name": "Foot and Ankle",
+                "checked": false
+            }, {
+                "name": "Knee",
+                "checked": false
+            }, {
+                "name": "Hip & Pelvis",
+                "checked": false
+            }, {
+                "name": "Lumbar ",
+                "checked": false
+            }, {
+                "name": "Thoracic Region",
+                "checked": false
+            }, {
+                "name": "Cervical",
+                "checked": false
+            }, {
+                "name": "Shoulder",
+                "checked": false
+            }, {
+                "name": "Elbow, Wrist & Hand",
+                "checked": false
+            }]
+        }
+
+    ]
+}

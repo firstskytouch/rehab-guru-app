@@ -1,0 +1,20 @@
+<md-dialog class="custom-dialog">
+	<div layout="row" layout-align="center center">
+		<h3 class="modal-title">Filters</h3>
+		<span flex></span>
+		<md-button class="md-icon-button" ng-click="data.cancel()">
+			<md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+		</md-button>
+	</div>
+	<md-dialog-content>
+		<div class="modal-body scroll-y">
+			<md-input-container class="md-block">
+				<input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)" />
+			</md-input-container>
+			<img src="{{url}}" alt="">
+			<md-button class="md-raised md-accent" ng-click="data.saveImagesToParse()">Save</md-button>
+		</div>
+	</md-dialog-content>
+	<md-dialog-actions>
+	</md-dialog-actions>
+</md-dialog>

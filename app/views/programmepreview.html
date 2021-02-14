@@ -1,0 +1,55 @@
+<div ng-include src="'views/partials/subHeader.html'"></div>
+<md-content flex layout="column" md-scroll-y>
+    <div layout="row" flex="noshrink" layout-align="center start">
+        <div flex-xs="90" flex="80">
+            <br>
+            <div ng-hide="editorEnabled" layout="row" layout-align="start center" style="display: -webkit-box">
+
+
+                <!-- <h3 flex="60">{{$storage.Programme.programmeTitle}}</h3> -->
+                <div flex="60" class="page-title">
+                    <span class="title-background">{{$storage.Programme.programmeTitle}}</span>
+                    <h1>{{$storage.Programme.programmeTitle}}</h1>
+                </div>
+
+                <div flex></div>
+                <md-button class="md-icon-button md-primary" ng-click="editorEnabled=!editorEnabled">
+                    <md-icon>edit</md-icon>
+                </md-button>
+            </div>
+            <div ng-show="editorEnabled" layout="row" layout-align="start center" style="display: -webkit-box">
+                <md-input-container class="md-block" flex="60">
+                    <input type="text" id="exerciseTitle" ng-model="$storage.Programme.programmeTitle" aria-invalid="false">
+                </md-input-container>
+                <div flex></div>
+                <md-button class="md-icon-button md-accent" ng-click="editorEnabled=!editorEnabled">
+                    <md-icon>checkmark</md-icon>
+                </md-button>
+            </div>
+            <div ng-if="$storage.Programme.exerciseData.length === 0" class="text-center">
+                <h4>You don't have any exercises in your programme yet!</h4>
+            </div>
+            <div layout-fill>
+                <div class="well white-bg" id="{{$index}}" ng-repeat="exercise in $storage.Programme.exerciseData" flex="100">
+                    <h3>{{exercise.exerciseName}}</h3>
+                    <br />
+                    <md-content layout="row" md-scroll-x class="white-bg">
+                        <div class="thumbnailImage" ng-repeat="image in exercise.images track by $index">
+                            <div ng-if="isNumber(image)" class="thumbnailImage" style="background-image:url(https://rehabgurufiles.s3.amazonaws.com/thumb/{{image}}.jpg)"></div>
+                            <div ng-if="!isNumber(image)" class="thumbnailImage" style="background-image:url({{secureUrl(image)}})"></div>
+                        </div>
+                    </md-content>
+                    <div layout="column">
+                        <h5><span class="orange-text">Description</span></h5>
+                        <li>{{exercise.exerciseDescription}}</li>
+                        <br />
+                        <ul class="row container" ng-if="exercise.Params" layout="rows">
+                            <label ng-repeat="param in exercise.Params track by $index" class="param-list-item"><span class="orange">{{param.param}} : </span>{{param.childParam}}</label>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</md-content>

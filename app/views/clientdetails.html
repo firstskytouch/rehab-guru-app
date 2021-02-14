@@ -1,0 +1,76 @@
+<md-content layout="row" class="main-bg" layout-padding layout-align="center start">
+	<div class="container md-padding" layout-fill>
+		<div layout="row" layout-align="center center">
+			<div class="page-title">
+				<span class="title-background">{{$storage.Client.name}}</span>
+				<h1>{{$storage.Client.name}}</h1>
+			</div>
+			<div flex></div>
+			<md-menu md-position-mode="target-right target">
+				<md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+					<md-icon>more_horiz</md-icon>
+				</md-button>
+				<md-menu-content width="4">
+					<md-menu-item>
+						<md-button ui-sref="clients">
+							<md-icon>navigate_before</md-icon>Back</md-button>
+					</md-menu-item>
+					<md-menu-item>
+						<md-button ng-click="editClient(client)">
+							<md-icon>edit</md-icon>Edit Client</md-button>
+					</md-menu-item>
+					<md-menu-item>
+						<md-button href="#/program">
+							<md-icon>note_add</md-icon>New Program</md-button>
+					</md-menu-item>
+					<md-menu-item>
+						<md-button ng-click="deleteClient(client)">
+							<md-icon>delete</md-icon>Delete Client</md-button>
+					</md-menu-item>
+				</md-menu-content>
+			</md-menu>
+		</div>
+		<h4 ng-if="programmes.length === 0">{{$storage.Client.name}} doesn't have any programs prescribed yet. <a ui-sref="program">Create one</a>? </h4>
+		<h3 ng-if="programmes.length >= 1" class="orange">Programs</h3>
+		<md-grid-list md-cols="3" md-cols-xs="1" md-cols-sm="1" md-cols-md="2" md-row-height="200px">
+			<md-grid-tile class="gray" md-rowspan="1" md-colspan="1" ng-repeat="programme in programmes track by $index">
+				<div class="md-whiteframe-2dp client-program" flex>
+					<div layout="column" class="md-padding client-program-top">
+						<span class="accent"><strong>{{programme.prescribedProgrammeTitle}}</strong></span>
+						<p><span class="programme-meta">Sent {{programme.createdAt | date: 'dd MMM yy'}}</span></p>
+					</div>
+					<div class="md-padding client-program-buttons" layout="row" layout-align="center center">
+						<div class="clientdetail-icon" layout="row" layout-align="center center">
+							<md-button class="md-icon-button" ng-click="sendAgain(programme)">
+								<md-icon>mail</md-icon>
+							</md-button>
+							<label>Mail</label>
+						</div>
+						<div class="clientdetail-icon" layout="row" layout-align="center center">
+							<md-button class="md-icon-button" ng-click="useAsTemplate(programme)">
+								<md-icon>widgets</md-icon>
+							</md-button>
+							<label>Template</label>
+						</div>
+						<div class="clientdetail-icon" layout="row" layout-align="center center">
+							<md-button class="md-icon-button" ng-click="deletePrescription(programme)">
+								<md-icon>delete</md-icon>
+							</md-button>
+							<label>Mail</label>
+						</div>
+						<div class="clientdetail-icon" layout="row" layout-align="center center">
+							<md-button class="md-icon-button" href="http://client.rehabguru.com/?pid={{programme.objectId}}" target="_blank">
+								<md-icon>remove_red_eye</md-icon>
+							</md-button>
+							<label>See</label>
+						</div>
+					</div>
+				</div>
+			</md-grid-tile>
+		</md-grid-list>
+		<div layout-align="center center">
+			<div class="" ng-click="null" layout="column" flex="30">
+			</div>
+		</div>
+	</div>
+</md-content>

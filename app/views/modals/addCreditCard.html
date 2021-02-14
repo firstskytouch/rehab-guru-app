@@ -1,0 +1,63 @@
+<md-dialog id="add_templete_excerises" class="custom-dialog">
+	<div layout="row" layout-align="center center">
+		<h3>Enter Card Details</h3>
+		<span flex></span>
+		<md-button class="md-icon-button" ng-click="data.hide()">
+			<md-icon aria-label="Close dialog">close</md-icon>
+		</md-button>
+	</div>
+	<form ng-hide="subscription" stripe-form="handleStripe" novalidate>
+		<md-dialog-content class="empty-error">
+			<div>
+				<md-input-container class="md-block">
+					<label for="">Card number</label>
+					<input type="text" name="cardNumber" ng-model="number" placeholder="4242 4242 4242 4242" payments-validate="card" payments-format="card" payments-type-model="type" ng-class="form.number.$card.type" required/>
+				</md-input-container>
+				<div ng-messages="form.cardNumber.$dirty && form.cardNumber.$error.required" role="alert">
+					<div ng-message-exp="['required']">
+						Card Number is required
+					</div>
+				</div>
+			</div>
+			<div>
+				<md-input-container class="md-block">
+					<label for="">Name on card </label>
+					<input type="text" id="cardName" name="cardName" placeholder="Mr Han Solo" required/>
+				</md-input-container>
+				<div ng-messages="form.cardName.$dirty && form.cardName.$error.required" role="alert">
+					<div ng-message-exp="['required']">
+						Card Name is required
+					</div>
+				</div>
+			</div>
+			<div layout="row">
+				<div flex="45">
+					<md-input-container class="md-block">
+						<label for="">Expiry</label>
+						<input type="text" name="cardExpiry" placeholder="12/17" ng-model="expiry" payments-validate="expiry" payments-format="expiry" required/>
+					</md-input-container>
+					<div ng-messages="form.cardExpiry.$dirty && form.cardExpiry.$error.required" role="alert">
+						<div ng-message-exp="['required']">
+							Expiry is required
+						</div>
+					</div>
+				</div>
+				<div flex></div>
+				<div flex="45">
+					<md-input-container class="md-block">
+						<label for="">CVC</label>
+						<input type="text" name="cardCVC" placeholder="123" ng-model="cvc" payments-validate="cvc" payments-format="cvc" payments-type-model="type" required/>
+						<div ng-messages="colorForm.favoriteColor.$error" role="alert">
+							<div ng-message-exp="['required']">
+								CVC is required
+							</div>
+						</div>
+					</md-input-container>
+				</div>
+			</div>
+		</md-dialog-content>
+		<md-dialog-actions>
+			<md-button class="md-raised md-accent" type="submit" flex>Submit</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

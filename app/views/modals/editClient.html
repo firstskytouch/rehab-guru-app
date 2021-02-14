@@ -1,0 +1,22 @@
+<md-dialog  class="custom-dialog">
+	<div layout="row" layout-align="center center">
+		<h3>Edit Client</h3>
+		<span flex></span>
+		<md-button class="md-icon-button" ng-click="cancel()">
+			<md-icon aria-label="Close dialog">close</md-icon>
+		</md-button>
+	</div>
+	<md-dialog-content>
+		<div class="md-dialog-content">
+			<md-input-container class="md-block">
+				<input id="textinput" initial-value ng-model="editUser.name" name="textinput" type="text" placeholder="Client Name" required="">
+			</md-input-container>
+			<md-input-container class="md-block">
+				<input id="email" initial-value ng-model="editUser.email" name="email" type="text" placeholder="Email">
+			</md-input-container>
+		</div>
+	</md-dialog-content>
+	<md-dialog-actions>
+		<md-button class="md-raised md-accent" ng-click="saveEditClient(editUser)">Save</md-button>
+	</md-dialog-actions>
+</md-dialog>

@@ -1,0 +1,202 @@
+<div class="no-print" ng-include src="'views/partials/subHeader.html'"></div>
+<md-content flex layout="column" md-scroll-y>
+	<div layout="row" flex="noshrink" layout-align="center start" class="no-print">
+		<div flex="70" flex-xs="90">
+			<br>
+			<br>
+			<!-- <div flex="25" flex-xs="50" layout="column" layout-align="center center">
+				<h2>Publish</h2>
+			</div> -->
+			<div class="page-title">
+				<span class="title-background">Publish</span>
+				<h1>Publish</h1>
+			</div>
+			<md-grid-list md-cols="2" md-cols-gt-sm="4" md-row-height="200px">
+				<md-grid-tile>
+					<div class="publish-button" layout="column" layout-align="center center">
+						<div ng-click="openSendProgramme()" class="publish-button-icon" layout="column" layout-align="center center">
+							<i class="ion-ios-paperplane"></i>
+						</div>
+						<br>
+						<span class="publish-button-text">SEND</span>
+					</div>
+				</md-grid-tile>
+				<md-grid-tile>
+					<div class="publish-button" layout="column" layout-align="center center">
+						<div ng-click="openPublisher()" class="publish-button-icon" layout="column" layout-align="center center">
+							<i class="ion-ios-printer"></i>
+						</div>
+						<br>
+						<span class="publish-button-text">PUBLISH</span>
+					</div>
+				</md-grid-tile>
+				<md-grid-tile>
+					<div class="publish-button" layout="column" layout-align="center center">
+						<div ng-click="saveProgrammeModal()" class="publish-button-icon" layout="column" layout-align="center center">
+							<i class="ion-ios-bookmarks-outline"></i>
+						</div>
+						<br>
+						<span class="publish-button-text">SAVE</span>
+					</div>
+				</md-grid-tile>
+				<md-grid-tile>
+					<div class="publish-button" layout="column" layout-align="center center">
+						<div ng-click="createClient()" class="publish-button-icon" layout="column" layout-align="center center">
+							<i class="ion-ios-personadd-outline"></i>
+						</div>
+						<br>
+						<span class="publish-button-text">ADD CLIENT</span>
+					</div>
+				</md-grid-tile>
+			</md-grid-list>
+		</div>
+	</div>
+	<div layout="row" flex="noshrink" layout-align="center center">
+		<div class="subscription-content" ng-if="status == 3">
+			<form name="form" class="subscription-form padding-16" role="form" layout="column">
+				<md-tabs md-dynamic-height>
+					<md-tab label="Save">
+						<md-content class="md-dialog-content main-bg">
+							<br>
+							<h3>Save program as a new Template</h3>
+							<label for="programmeTitle" class="control-label">Enter the Program title and click save button to save program as a new template</label>
+							<br>
+							<br>
+							<br>
+							<br>
+							<md-input-container class="md-block">
+								<label>{{$storage.Client.name.name + ' ' + currentDate || 'Programme Title'}}</label>
+								<input id="programmeTitle" ng-model="$storage.Programme.programmeTitle">
+							</md-input-container>
+							<br>
+							<div>
+								<md-button ng-disabled="!currentUser.attributes.emailVerified || $storage.Programme.programmeTitle.length < 1" ng-click="saveProgramme()" class="md-raised md-primary">Save</md-button>
+							</div>
+							<br>
+						</md-content>
+					</md-tab>
+					<md-tab label="Update">
+						<md-content class="md-dialog-content main-bg">
+							<br>
+							<h3>Update Existing Program</h3>
+							<label for="programmeTitle" class="control-label">To update an existing program, select the title below and click the update button to update the template</label>
+							<br>
+							<br>
+							<br>
+							<br>
+							<md-chips ng-model="$storage.SelectedProgramme" md-autocomplete-snap md-require-match="true" md-max-chips="1">
+								<md-autocomplete md-items="programme in userProgrammes" md-selected-item="programme.selectedItem" md-search-text="programme.searchText" md-item-text="programme.programmeTitle" placeholder="Search and select Templete..." md-menu-class="autocomplete-custom-template">
+									<md-item-template>
+										<p>
+											<span> {{programme.programmeTitle}} </span>
+										</p>
+									</md-item-template>
+								</md-autocomplete>
+								<md-chip-template>
+									<span>
+										<small>{{$chip.programmeTitle}}</small>
+									</span>
+								</md-chip-template>
+							</md-chips>
+							<br>
+							<br>
+							<div>
+								<md-button ng-disabled="$storage.SelectedProgramme.length === 0" ng-click="updateProgramme()" class="md-raised md-primary">Update</md-button>
+							</div>
+							<br>
+						</md-content>
+					</md-tab>
+				</md-tabs>
+			</form>
+		</div>
+		<div class="my-container" ng-if="status == 2">
+			<div class="well no-print" layout="column" layout-align="center center" layout-padding>
+				<h2>Publish Settings</h2>
+				<div layout-gt-sm="row" layout="column" layout-align="space-around center" layout-fill>
+					<div layout-xs="column" layout="row" flex="100" flex-gt-sm="66" layout-align="space-around center">
+						<div flex="45">
+							<p>Font size</p>
+							<md-slider class="md-primary" flex md-discrete ng-model="font" step="1" min="1" max="3" aria-label="rating">
+							</md-slider>
+						</div>
+						<div flex></div>
+						<div flex="45">
+							<p>Image size</p>
+							<md-slider class="md-primary" flex md-discrete ng-model="feedback" step="1" min="1" max="3" aria-label="rating">
+							</md-slider>
+						</div>
+					</div>
+					<div layout="column" flex="100" flex-gt-sm="33" layout-align="space-around center">
+						<p>Images On High Quality<small></small></p>
+						<div layout="row" layout-align="center center">
+							<md-switch ng-model="showImg" id="showImg" class="md-primary" ng-change="message=showImg?'On':'Off'">
+								{{ message }}
+							</md-switch>
+							<md-switch ng-model="imageQuality" id="imageQuality" class="md-primary" ng-change="qualityMsg=imageQuality?'On':'Off'" class="green">
+								{{ qualityMsg }}
+							</md-switch>
+						</div>
+					</div>
+				</div>
+				<div layout-fill layout="row">
+					<div flex></div>
+					<md-button class="md-raised md-accent pull-right no-print" ng-click="print()"><i class="ion-ios-printer-outline"></i> Print </md-button>
+					<md-button class="md-raised md-primary pull-right no-print" ng-click="print()">
+						<md-icon>file_download</md-icon> Download </md-button>
+				</div>
+			</div>
+			<br>
+			<div class="previewContainer" layout="column" layout-align="center center">
+				<div layout="column" layout-align="center start">
+
+					<div id="header" class="programme-header" style="background-image: url(images/image-clip/img_publish.jpg);" ng-style="{'height': getHeaderHeight() + 'px'}">
+						<h4 class="programme-preview-title" ng-style="{'margin-top': getHeaderHeight() * 0.5 + 'px', 'margin-left': getHeaderWidth() * 0.6 + 'px'}">{{$storage.Programme.programmeTitle}}</h4>
+					</div>
+
+					<div class="exercise-tile-container full-width" layout="column" layout-align="start start">
+						<!-- layout-fill -->
+						<div ng-if="$storage.Programme.exerciseData.length === 0" class="text-center">
+							<label>You don't have any exercises in your programme yet!</label>
+						</div>
+						<div class="well exercise-well full-width" id="{{$index}}" ng-repeat="exercise in $storage.Programme.exerciseData" layout="column" layout-align="start start" layout-padding>
+							<!-- layout-fill -->
+							<h3 ng-style="fontStyle.title">{{exercise.exerciseName}}</h3>
+							<div>
+								<div ng-if="showImg" class="thumbnailImage {{imageSize}}" ng-repeat="image in exercise.images track by $index">
+									<img ng-if="isNumber(image)" src="https://rehabgurufiles.s3.amazonaws.com/{{getImageQuality(imageQuality)}}/{{image}}.jpg" alt="">
+									<img ng-if="!isNumber(image)" src="{{secureUrl(image)}}" alt="">
+								</div>
+							</div>
+
+							<h5><span class="{{brandColour()}}" ng-style="fontStyle.description">Description</span></h5>
+							<li ng-style="fontStyle.description">{{exercise.exerciseDescription}}</li>
+							<ul class="row container my-title" ng-if="exercise.Params">
+								<li ng-style="fontStyle.description" ng-repeat="param in exercise.Params track by $index" class="param-list-item {{brandColour()}}"><span>{{param.param}} : </span>{{param.childParam}}
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<img class="programme-header" ng-src="images/Rehab_Guru_Programme_Footer{{brandingImage()}}.png" alt="Rehab Guru Logo">
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+</md-content>
+<style type="text/css">
+	@media screen {
+		div.divFooter {
+			display: none;
+		}
+	}
+
+	@media print {
+		div.divFooter {
+			position: fixed;
+			font-size: 6px;
+			color: #fff;
+			bottom: 0;
+		}
+	}
+</style>

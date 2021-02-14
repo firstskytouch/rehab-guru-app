@@ -1,0 +1,158 @@
+img.login-logo {
+    width: 314px;
+    height: 59px;
+    margin-top: 45px;
+    margin-bottom: 63px;
+}
+
+img.register-logo {
+    width: 314px;
+    height: 59px;
+    margin-top: 45px;
+    margin-bottom: 49px;
+}
+
+.login-button {
+    a,
+    button {
+        font-size: 12pt;
+        letter-spacing: 1.6px;
+        width: 116px;
+        height: 43px;
+        margin-right: 18px;
+        margin-left: 18px;
+    }
+
+    .md-button.md-raised[disabled] {
+        opacity: 0.65;
+        background-color: $primary;
+        color: white;
+    }
+}
+
+.register-button {
+    padding-bottom: 48px;
+
+    .md-button.md-raised[disabled] {
+        background-color: $accent;
+    }
+}
+@media (min-width: 600px) {
+    .login-button {
+        a,
+        button {
+            width: 165px;
+            height: 52px;
+        }
+    }
+}
+
+.login-content {
+    background-image: url('../images/image-clip/img_subscription1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 6px;
+}
+
+.register-content {
+    background-image: url('../images/image-clip/img_register.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 6px;
+}
+
+.login-form {
+    background-color: $board-bg;
+    border-radius: 0 6px 6px 0;
+}
+@media (min-width: 1280px) {
+    .login-content {
+        background-size: 49%;
+        width: 1040px;
+    }
+
+    .register-content {
+        background-size: 49%;
+        width: 1040px;
+    }
+
+    .login-form {
+        width: 51%;
+        margin-left: 49%;
+    }
+}
+
+.forgot-bg {
+    height: 86px;
+    background: #FCFCFC;
+    border-top: solid;
+    border-width: 1px;
+    border-color: #e7E7E7;
+    margin-top: 50px;
+    border-radius: 0 0 6px 0;
+}
+
+small.terms {
+    margin-top: 26px;
+    padding: 15px;
+    font-size: 10.95pt;
+    text-align: center;
+    color: rgb(77, 78, 78);
+}
+
+label.hint {
+    color: #b9c7d1;
+    font-weight: 600;
+    font-size: 11.4pt;
+}
+
+button.forgot {
+    font-size: 11.9pt;
+    text-transform: none;
+    color: rgb(51, 122, 183);
+}
+
+div.login {
+    md-input-container {
+        min-width: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: -8px;
+
+        input {
+            font-size: 15.3pt;
+            height: 50px;
+        }
+    }
+}
+
+div.register {
+    md-input-container {
+        min-width: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: -8px;
+
+        input {
+            font-size: 15.3pt;
+            height: 40px;
+        }
+    }
+}
+
+.form-mobile {
+    margin: 16px 0;
+}
+
+label.forgot-password {
+    font-size: 17.2pt;
+    font-weight: bold;
+}
+
+label.forgot-description {
+    font-size: 11.25pt;
+    color: $light-grey-text;
+}
+.forgot-form {
+    margin: -8px 35px 35px 35px;
+}

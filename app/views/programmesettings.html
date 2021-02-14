@@ -1,0 +1,166 @@
+<div ng-include src="'views/partials/subHeader.html'"></div>
+<md-content flex layout="column" md-scroll-y>
+	<div layout="row" flex="noshrink" layout-align="center start">
+		<div layout="column" flex="90" flex-xs="95">
+			<div class="page-title">
+				<span class="title-background">Settings</span>
+				<h1>Settings</h1>
+			</div>
+			<div ng-if="$storage.Programme.exerciseData.length === 0" class="text-center">
+				<h4>You don't have any exercises in your programme yet!</h4>
+			</div>
+			<div layout="row">
+				<div flex-gt-sm="65" flex="100" class="panel-group" sv-root sv-part="$storage.Programme.exerciseData" sv-on-start="onStarted($part, $item, $index)" sv-on-stop="onStopped($part, $item, $index)" role="tablist" aria-multiselectable="true" data-start-collapsed="false">
+					<md-expansion-panel-group hide-gt-sm>
+						<md-expansion-panel class="setting-item" ng-repeat="exercise in $storage.Programme.exerciseData track by $index" sv-element>
+							<md-expansion-panel-collapsed>
+								<div flex>{{exercise.exerciseName}}</div>
+								<div layout="row" layout-align="center center">
+									<md-icon class="lg-icon" sv-handle>
+										<div hide>{{image = exercise.images[exercise.currentImage]}}</div>
+										<div ng-if="isNumber(image)" class="img-icon" style="background-image:url(https://rehabgurufiles.s3.amazonaws.com/thumb/{{image}}.jpg)"></div>
+										<div ng-if="!isNumber(image)" class="img-icon" style="background-image:url({{secureUrl(image)}})"></div>
+									</md-icon>
+								</div>
+							</md-expansion-panel-collapsed>
+							<md-expansion-panel-expanded>
+								<md-expansion-panel-header ng-click="$panel.collapse()">
+									<div flex>{{exercise.exerciseName}}</div>
+									<md-icon class="lg-icon" sv-handle>
+										<div hide>{{image = exercise.images[exercise.currentImage]}}</div>
+										<div ng-if="isNumber(image)" class="img-icon" style="background-image:url(https://rehabgurufiles.s3.amazonaws.com/thumb/{{image}}.jpg)"></div>
+										<div ng-if="!isNumber(image)" class="img-icon" style="background-image:url({{secureUrl(image)}})"></div>
+									</md-icon>
+								</md-expansion-panel-header>
+								<md-expansion-panel-content>
+									<div layout="column">
+										<div class="white-bg full-width" layout-padding>
+											<div layout="row">
+												<div hide>{{image = exercise.images[exercise.currentImage]}}</div>
+												<div class="settingImage">
+													<div ng-if="isNumber(image)" class="specifics-image" style="background-image:url(https://rehabgurufiles.s3.amazonaws.com/thumb/{{image}}.jpg)"></div>
+													<div ng-if="!isNumber(image)" class="specifics-image" style="background-image:url({{secureUrl(image)}})"></div>
+												</div>
+												<span>&nbsp;&nbsp;&nbsp;</span>
+												<div layout="column" class="noError">
+													<md-input-container class="md-block">
+														<input type="text" id="exerciseTitle" ng-model="exercise.exerciseName" aria-label="exerciseTitle">
+													</md-input-container>
+													<div layout="row">
+														<md-button class="md-icon-button" ng-click="deleteExercise(exercise);">
+															<md-icon>delete</md-icon>
+														</md-button>
+													</div>
+												</div>
+												<div flex></div>
+												<div layout="column" layout-align="space-around center">
+													<md-button class="md-icon-button" ng-click="prevImage(exercise)">
+														<md-icon>arrow_back</md-icon>
+													</md-button>
+													<md-button class="md-icon-button" ng-click="nextImage(exercise)">
+														<md-icon>arrow_forward</md-icon>
+													</md-button>
+												</div>
+											</div>
+											<div class="form-group">
+												<md-input-container md-no-float class="md-block">
+													<label>Description</label>
+													<textarea ng-model="exercise.exerciseDescription" rows="4" md-no-autogrow="true"></textarea>
+												</md-input-container>
+											</div>
+											<div>
+												<div ng-repeat="param in exercise.Params track by $index" ng-click="showParams(param)" layout="rows" style="float: left">
+													<div layout="rows">
+														<md-input-container class="tiny-text">
+															<label for="programmeTitle" class="control-label">{{param.param}} </label>
+															<input type="text" id="programmeTitle" ng-model="param.childParam">
+														</md-input-container>
+														<md-button class="md-icon-button" ng-click="removeParam(exercise, $index)">
+															<md-icon>remove_circle</md-icon>
+														</md-button>
+													</div>
+												</div>
+												<md-button ng-click="addParam($index)" class="md-raised md-primary" style="float:right">Add Param</md-button>
+											</div>
+										</div>
+									</div>
+								</md-expansion-panel-content>
+							</md-expansion-panel-expanded>
+						</md-expansion-panel>
+					</md-expansion-panel-group>
+					<br>
+					<md-list hide-xs hide-sm>
+						<div class="setting-item-group setting-item" ng-repeat="exercise in $storage.Programme.exerciseData track by $index" sv-element layout="row" style="padding-right: 24px;" ng-mouseover="changeIndex($event, $index)">
+							<md-list-item flex class="white-bg" ng-click="selectExcersise(exercise);">
+								<span>{{exercise.exerciseName}}</span>
+								<div flex></div>
+								<div layout="row" layout-align="center center">
+									<md-icon class="lg-icon">
+										<div hide>{{image = exercise.images[0]}}</div>
+										<div ng-if="isNumber(image)" class="img-icon" style="background-image:url(https://rehabgurufiles.s3.amazonaws.com/thumb/{{image}}.jpg)"></div>
+										<div ng-if="!isNumber(image)" class="img-icon" style="background-image:url({{secureUrl(image)}})"></div>
+									</md-icon>
+								</div>
+							</md-list-item>
+							<div class="handle" layout="row" layout-align="center center" sv-handle ng-class="whatClassIsIt($index)">
+								<md-icon class="md-primary md-mini" md-svg-src="images/icon/menu-bars.svg"></md-icon>
+							</div>
+						</div>
+					</md-list>
+				</div>
+				<div flex="5" hide-sm hide-xs></div>
+				<div flex-gt-sm="30" layout="column" layout-align="center center" hide-sm hide-xs ng-if="exercise != null">
+					<div class="white-bg full-width" layout-padding>
+						<md-input-container class="md-block">
+							<input type="text" id="exerciseTitle" ng-model="exercise.exerciseName" aria-label="exerciseTitle">
+						</md-input-container>
+						<div layout="row" style="margin-top: -32px;">
+							<div hide>{{image = exercise.images[exercise.currentImage]}}</div>
+							<div class="settingImage">
+								<div ng-if="isNumber(image)" class="specifics-image" style="background-image:url(https://rehabgurufiles.s3.amazonaws.com/thumb/{{image}}.jpg)"></div>
+								<div ng-if="!isNumber(image)" class="specifics-image" style="background-image:url({{secureUrl(image)}})"></div>
+							</div>
+							<span>&nbsp;&nbsp;&nbsp;</span>
+							<div layout="column" class="noError">
+								<div layout="row">
+									<md-button class="md-icon-button" ng-click="deleteExercise(exercise);">
+										<md-icon>delete</md-icon>
+									</md-button>
+								</div>
+							</div>
+							<div layout="column" layout-align="space-around center">
+								<br>
+								<md-button class="md-icon-button" ng-click="prevImage(exercise)">
+									<md-icon>arrow_back</md-icon>
+								</md-button>
+								<md-button class="md-icon-button" ng-click="nextImage(exercise)">
+									<md-icon>arrow_forward</md-icon>
+								</md-button>
+							</div>
+						</div>
+						<div class="form-group">
+							<md-input-container md-no-float class="md-block">
+								<label>Description</label>
+								<textarea ng-model="exercise.exerciseDescription" rows="4" md-no-autogrow="true"></textarea>
+							</md-input-container>
+						</div>
+						<div>
+							<div ng-repeat="param in exercise.Params track by $index" ng-click="showParams(param)" layout="rows" style="float: left">
+								<div layout="rows">
+									<md-input-container class="tiny-text">
+										<label for="programmeTitle" class="control-label">{{param.param}} </label>
+										<input type="text" id="programmeTitle" ng-model="param.childParam">
+									</md-input-container>
+									<md-button class="md-icon-button" ng-click="removeParam(exercise, $index)">
+										<md-icon>remove_circle</md-icon>
+									</md-button>
+								</div>
+							</div>
+							<md-button ng-click="addParam($index)" class="md-raised md-primary" style="float:right">Add Param</md-button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</md-content>

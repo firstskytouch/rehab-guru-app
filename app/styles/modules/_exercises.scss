@@ -1,0 +1,143 @@
+.exerciseContainer {
+    md-card md-card-title {
+        padding-top: 16px;
+    }
+
+    md-card-title-text h5 {
+        color: $primary;
+        font-weight: 500;
+        font-size: 16px;
+        margin-top: 0;
+        text-align: center;
+    }
+
+    .thumbnailImage {
+        border: 0 solid #ddd;
+        width: 100%;
+        height: 200px;
+    }
+
+    md-card.exercise {
+        height: inherit;
+        width: inherit;
+        margin: 0;
+        border-radius: 6px;
+        box-shadow: none;
+        -webkit-transition-duration: 0.5s;
+        transition-duration: 0.5s;
+        padding-bottom: 10px;
+
+        &:hover {
+            -webkit-box-shadow: 0 0 51px -13px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0 0 51px -13px rgba(0,0,0,0.75);
+            box-shadow: 0 0 51px -13px rgba(0,0,0,0.75);
+        }
+
+        button {
+            &:hover md-icon {
+                -webkit-transition-duration: 0.5s;
+                transition-duration: 0.5s;
+                color: $accent;
+            }
+        }
+    }
+
+    md-grid-tile {
+        box-shadow: none;
+        border-radius: 6px;
+    }
+}
+
+.small-chips {
+    md-icon {
+        min-width: 18px;
+        min-height: 18px;
+        margin-top: 1px;
+    }
+}
+
+.demo-md-panel {
+    min-height: 500px;
+}
+
+.md-button.btn-exercise:hover {
+    background: $accent;
+    color: white;
+    md-icon {
+        color: white;
+    }
+}
+
+.exercise-search {
+    input {
+        width: 100%;
+        height: 50px;
+    }
+
+    md-icon {
+        height: 24px;
+        width: 24px;
+    }
+
+    ::-webkit-input-placeholder {
+        /* WebKit, Blink, Edge */
+        color: rgb(163, 177, 193);
+        font-style: italic;
+    }
+
+    :-moz-placeholder {
+        /* Mozilla Firefox 4 to 18 */
+        color: rgb(163, 177, 193);
+        opacity: 1;
+        font-style: italic;
+    }
+
+    ::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        color: rgb(163, 177, 193);
+        opacity: 1;
+        font-style: italic;
+    }
+
+    :-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: rgb(163, 177, 193);
+        font-style: italic;
+    }
+}
+
+.exercise-button {
+    button {
+        height: 50px;
+        margin: 0;
+        border-radius: 24px;
+        margin: 0;
+    }
+}
+
+.demo-dialog-example {
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12);
+    width: 500px;
+}
+
+.demo-dialog-content {
+    padding: 0 15px;
+    width: 100%;
+}
+
+.demo-dialog-content img {
+    height: 300px;
+    margin: auto;
+}
+
+.demo-dialog-button {
+    width: 100%;
+}
+
+.demo-menu-example {
+    background: white;
+    border-radius: 1px;
+    box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12);
+}

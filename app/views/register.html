@@ -1,0 +1,70 @@
+<md-content flex layout="column" class="form-mobile" md-scroll-y>
+	<div layout="row" flex="noshrink" layout-align="center end">
+		<div flex-xs="90" flex-sm="80" flex-md="80" class="register-content">
+			<form name="form" ng-submit="doLoginAction(user)" class="login-form" role="form">
+				<div layout="column" layout-align="center center">
+					<img class="register-logo center-block" src="images/rehabgurulogo.png">
+					<div style="width:74%;" layout="column" layout-align="space-between center" class="register">
+						<div layout-fill>
+							<label class="hint">FIRST NAME</label>
+						</div>
+						<md-input-container class="username">
+							<input ng-model="creds.firstName" aria-label="first name" type="text" name="firstName" id="firstName" required>
+							<div ng-messages="form.firstName.$error" role="alert">
+								<div ng-message-exp="['required']">
+									First name is required
+								</div>
+							</div>
+						</md-input-container>
+						<div layout-fill>
+							<label class="hint">LAST NAME</label>
+						</div>
+						<md-input-container class="username">
+							<input ng-model="creds.lastName" type="text" aria-label="last name" name="lastName" id="lastName" required>
+							<div ng-messages="form.lastName.$error" role="alert">
+								<div ng-message-exp="['required']">
+									Last name is required
+								</div>
+							</div>
+						</md-input-container>
+						<div layout-fill>
+							<label class="hint">EMAIL ADDRESS</label>
+						</div>
+						<md-input-container class="username">
+							<input ng-model="creds.email" type="email" aria-label="email" name="email" id="email" ng-pattern="/^.+@.+\..+$/" required>
+							<div ng-messages="form.email.$error" role="alert">
+								<div ng-message-exp="['required']">
+									Email is required
+								</div>
+								<div ng-message-exp="['pattern']">
+									You must input email
+								</div>
+							</div>
+						</md-input-container>
+						<div layout-fill>
+							<label class="hint">PASSWORD</label>
+						</div>
+						<md-input-container class="username">
+							<input ng-model="creds.password" type="password" aria-label="password" name="password" id="password" required>
+							<div ng-messages="form.lastName.$error" role="alert">
+								<div ng-message-exp="['required']">
+									Password is required
+								</div>
+							</div>
+						</md-input-container>
+					</div>
+				</div>
+				<label class="help-block danger">{{error.message}}</label>
+				<div layout="row" layout-align="center center" class="login-button register-button">
+					<md-button type="submit" class="md-primary md-raised" ng-click="register()" ng-disabled="form.$invalid || dataLoading">Register</md-button>
+					<label class="hint">OR</label>
+					<md-button class="md-accent md-raised" ng-click="cancel()">Login</md-button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div flex="noshrink" layout="row" layout-align="center start">
+		<small class="terms">By registering for a Rehab Guru account you are confirming that you agree to our <a class="orange" href="https://www.rehabguru.com/terms-and-conditions/" target="_blank">Terms of Use</a> and <a class="orange" href="https://www.rehabguru.com/privacy-policy/" target="_blank">Privacy Policy</a>.
+		</small>
+	</div>
+</md-content>
